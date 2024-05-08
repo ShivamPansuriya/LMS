@@ -1,0 +1,3 @@
+2024/05/08 18:10:12 Failed to establish SSH connection to  dial tcp 10.20.40.227:22: connect: connection refused
+2024/05/08 18:12:14 Failed to establish SSH connection to  dial tcp 10.20.40.227:22: connect: connection refused
+2024/05/08 18:12:14 2024-05-08 18:12:14.431403208 +0530 IST m=+0.043606350 map[error:map[error:dial tcp 10.20.40.227:22: connect: connection refused error.code:2 error.message:unable to establish ssh connection] metric.name:System object.host:yash object.ip:10.20.40.227 object.password:1010 object.port:22 request.type:Collect status:fail]
