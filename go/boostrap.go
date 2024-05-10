@@ -5,75 +5,121 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"motadata-lite/constants"
-	"motadata-lite/requesttype"
+	"motadata-lite/plugins/linux"
+	"motadata-lite/utils/constants"
+	"motadata-lite/utils/logger"
 	"os"
 	"time"
 )
 
 func main() {
 
-	file, err := os.OpenFile("boostrap.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer file.Close()
-
 	// Set the output of the logger to the file
 
-	log.SetOutput(file)
+	looger := logger.NewLogger("boostrap", "main")
 
 	decodedBytes, err := base64.StdEncoding.DecodeString(os.Args[1])
 
 	if err != nil {
 
-		log.Fatal("base64 decoding error: ", err)
+		looger.Fatal(fmt.Sprintf("base64 decoding error: %v", err))
 
 		return
 
 	}
 
-	var jsonInput map[string]interface{}
+	var jsonInput []map[string]interface{}
 
 	err = json.Unmarshal(decodedBytes, &jsonInput)
 
 	if err != nil {
 
-		log.Fatal("unable to convert string to json map: ", err)
+		looger.Fatal(fmt.Sprintf("unable to convert string to json map: %v", err))
 
 		return
 
 	}
 
-	if jsonInput[constants.RequestType] != nil && jsonInput[constants.MetricName] != nil && jsonInput[constants.ObjectHost] != nil && jsonInput[constants.ObjectPassword] != nil {
-		switch jsonInput[constants.RequestType].(string) {
+	outputChannel := make(chan bool, len(jsonInput))
 
-		case constants.Discovery:
+	defer close(outputChannel)
 
-			requesttype.Discover(jsonInput)
+	//for _, objectIP := range jsonInput {
+	//
+	//	userContext := objectIP
+	//
+	//	go func() {
+	//		errContexts := make([]map[string]interface{}, 0)
+	//
+	//		switch userContext[constants.DeviceType].(string) {
+	//
+	//		case constants.LinuxDevice:
+	//
+	//			middleware.Linux(userContext, &errContexts)
+	//		}
+	//
+	//		if len(errContexts) > 0 {
+	//			userContext[constants.Status] = constants.StatusFail
+	//
+	//			userContext[constants.Error] = errContexts
+	//		} else {
+	//			userContext[constants.Status] = constants.StatusSuccess
+	//		}
+	//
+	//		log.Println(time.Now(), userContext)
+	//
+	//		inputChannel <- userContext
+	//	}()
+	//}
 
-		case constants.Collect:
+	for _, objectIP := range jsonInput {
 
-			requesttype.Collector(jsonInput)
-		}
-	} else {
-		jsonInput[constants.Status] = constants.StatusFail
-		jsonInput[constants.Error] = map[string]interface{}{
-			constants.ErrorCode:    6,
-			constants.ErrorMessage: "not valid json object",
-			constants.Error:        "nil value in request type/ metric type/ host/ password",
-		}
+		userContext := objectIP
+
+		go func() {
+			errContexts := make([]map[string]interface{}, 0)
+
+			switch userContext[constants.DeviceType].(string) {
+
+			case constants.LinuxDevice:
+
+				switch userContext[constants.RequestType].(string) {
+
+				case constants.Collect:
+
+					linux.Collect(userContext, &errContexts)
+
+				case constants.Discovery:
+
+					linux.Discovery(userContext, &errContexts)
+				}
+			}
+
+			if len(errContexts) > 0 {
+				userContext[constants.Status] = constants.StatusFail
+
+				userContext[constants.Error] = errContexts
+			} else {
+				userContext[constants.Status] = constants.StatusSuccess
+			}
+
+			log.Println(time.Now(), userContext)
+
+			outputChannel <- true
+		}()
 	}
 
-	log.Println(time.Now(), jsonInput)
+	for i := 0; i < len(jsonInput); i++ {
+		select {
+		case _ = <-outputChannel:
+		}
+	}
 
 	jsonOutput, err := json.Marshal(jsonInput)
 
 	if err != nil {
 
-		log.Fatal("json marshal error: ", err)
+		looger.Fatal(fmt.Sprintf("json marshal error: \", err", err))
 
 	}
 
