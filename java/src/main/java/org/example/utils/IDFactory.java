@@ -12,7 +12,7 @@ public class IDFactory
         // Generate a random number
         Random random = new Random();
 
-        long randomNumber = random.nextLong();
+        long randomNumber = Math.abs(random.nextLong());
 
         // Combine timestamp and random number to create a unique ID
         long uniqueID = timestamp + randomNumber;

@@ -4,8 +4,16 @@ public class Constants
 {
     public Constants(){}
 
-    public static String CREATE_PROFILE = "createprofile";
+    public static final String CREATE_PROFILE = "createprofile";
 
-    public static String MESSAGE_SEPRATOR = "createprofile";
+    public static final String GET_PROFILE = "getprofile";
+
+    public static final String GET_DISCOVERY = "getdiscovery";
+
+    public static final String RUN_DISCOVERY = "rundiscovery";
+
+    public static final String CREATE_DISCOVERY = "creatediscovery";
+
+    public static final String MESSAGE_SEPARATOR = "~";
 
 }
