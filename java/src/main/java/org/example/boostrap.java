@@ -5,7 +5,9 @@ import io.vertx.core.ThreadingModel;
 import io.vertx.core.Vertx;
 import org.example.credentialprofile.CredentialProfile;
 import org.example.database.DBHandler;
+import org.example.discovery.Discovery;
 import org.example.pluginengine.PluginEngine;
+import org.example.provision.Provision;
 import org.example.route.Routes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,13 +19,16 @@ public class boostrap
     public static void main(String[] args)
     {
 
+        logger.info("started");
         var vertx = Vertx.vertx();
 
         vertx.deployVerticle(Routes.class.getName());
 
         vertx.deployVerticle(CredentialProfile.class.getName(),new DeploymentOptions().setInstances(1));
 
-        vertx.deployVerticle(discovery.class.getName(),new DeploymentOptions().setInstances(1));
+        vertx.deployVerticle(Discovery.class.getName(),new DeploymentOptions().setInstances(1));
+
+        vertx.deployVerticle(Provision.class.getName(),new DeploymentOptions().setInstances(1));
 
         vertx.deployVerticle(DBHandler.class.getName(),new DeploymentOptions().setInstances(1).setThreadingModel(ThreadingModel.WORKER));
 

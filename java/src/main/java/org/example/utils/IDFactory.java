@@ -2,21 +2,13 @@ package org.example.utils;
 
 import java.time.Instant;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class IDFactory
 {
+    private static final AtomicLong counter = new AtomicLong(0);
     public long generateID(){
-
-        long timestamp = Instant.now().toEpochMilli();
-
-        // Generate a random number
-        Random random = new Random();
-
-        long randomNumber = Math.abs(random.nextLong());
-
-        // Combine timestamp and random number to create a unique ID
-        long uniqueID = timestamp + randomNumber;
-
-        return uniqueID;
+        return counter.getAndIncrement();
     }
 }

@@ -40,7 +40,7 @@ func write(level, message, directory, component string) {
 
 func NewLogger(directory, component string) Logger {
 	return Logger{
-		directory: fmt.Sprintf("logs/%s", directory),
+		directory: directory,
 		component: component,
 	}
 }

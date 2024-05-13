@@ -4,7 +4,11 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
+import org.example.discovery.Discovery;
 import org.example.utils.Constants;
+import org.example.utils.Helper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,86 +20,52 @@ import java.util.Map;
 
 public class PluginEngine extends AbstractVerticle
 {
+    static final Logger logger = LoggerFactory.getLogger(PluginEngine.class);
+
     @Override
-    public void start() throws Exception
+    public void start()
     {
         vertx.eventBus().localConsumer("run.engine",message ->
         {
-            var identifier = message.body().toString().split(Constants.MESSAGE_SEPARATOR);
-
-            var ms = "getContext"+Constants.MESSAGE_SEPARATOR +message.body().toString();
-
-            var contextArray = new JsonArray();
-
-
-            var context = new JsonObject();
-
-            vertx.eventBus().request("get",ms,reply->
+            try
             {
-                if(reply.succeeded())
+
+                var encodedString = Base64.getEncoder().encodeToString(message.body().toString().getBytes());
+
+                var processBuilder = new ProcessBuilder("/home/shivam/motadata-lite/motadata-lite", encodedString);
+
+                processBuilder.redirectErrorStream(true);
+
+                var process = processBuilder.start();
+
+                // Read the output of the command
+                var reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+                String line;
+
+                var buffer = Buffer.buffer();
+
+                while ((line = reader.readLine()) != null)
                 {
-                    var discoveryCredential = new JsonObject(reply.result().body().toString());
-
-                    context.put("request.type", identifier[0]);
-
-                    context.put("device.type", "linux");
-
-                    context.put("object.port", discoveryCredential.getString("object.port"));
-
-                    context.put("object.ip", discoveryCredential.getString("object.ip"));
-
-                    for(var credential : discoveryCredential.getJsonArray("credentials"))
-                    {
-                        var credentialJson = new JsonObject(credential.toString());
-
-                        context.put("object.password", credentialJson.getString("object.password"));
-
-                        context.put("object.host", credentialJson.getString("object.host"));
-                    }
-
-                    contextArray.add(context);
+                    buffer.appendString(line);
                 }
-            });
-            var result = runContext(contextArray.toString());
 
-            message.reply(result);
-        });
-    }
+                byte[] decodedBytes = Base64.getDecoder().decode(buffer.toString());
 
-    private JsonArray runContext(String context){
+                // Convert the byte array to a string
+                var decodedString = new String(decodedBytes);
 
-        try {
+                message.reply(decodedString);
 
-            String encodedString = Base64.getEncoder().encodeToString(context.getBytes());
-
-            ProcessBuilder processBuilder = new ProcessBuilder("/home/shivam/motadata-lite/motadata-lite", encodedString);
-
-            processBuilder.redirectErrorStream(true);
-
-            Process process = processBuilder.start();
-
-            // Read the output of the command
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-
-            var buffer = Buffer.buffer();
-
-            while ((line = reader.readLine()) != null) {
-                buffer.appendString(line);
+            }
+            catch (Exception exception)
+            {
+                exception.printStackTrace();
             }
 
-            byte[] decodedBytes = Base64.getDecoder().decode(buffer.toString());
+        });
 
-            // Convert the byte array to a string
-            String decodedString = new String(decodedBytes);
-
-            var result = new JsonArray(decodedString);
-
-            return result;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
+
 }

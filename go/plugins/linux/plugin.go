@@ -1,59 +1,78 @@
 package linux
 
 import (
+	"fmt"
 	"motadata-lite/client/SSHclient"
 	"motadata-lite/utils/constants"
+	PluginLogger "motadata-lite/utils/logger"
 	"strconv"
 	"strings"
 )
 
+var logger = PluginLogger.NewLogger("plugins/linux", "plugin")
+
 func Discovery(jsonInput map[string]interface{}, errContext *[]map[string]interface{}) {
 
-	var err error
+	defer func() {
+		if err := recover(); err != nil {
+
+			logger.Error(fmt.Sprintf("%v", err))
+
+			*errContext = append(*errContext, map[string]interface{}{
+				constants.ErrorCode:    21,
+				constants.ErrorMessage: "formating problem",
+				constants.Error:        err,
+			})
+		}
+	}()
 
 	client := SSHclient.Client{}
 
-	client.SetContext(jsonInput)
+	logger.Info(fmt.Sprintf("new client created"))
 
-	isValid := client.Init(jsonInput[constants.ObjectIP].(string), jsonInput[constants.ObjectPort].(float64), jsonInput[constants.ObjectHost].(string), jsonInput[constants.ObjectPassword].(string))
+	for _, credential := range jsonInput["credentials"].([]interface{}) {
 
-	if !isValid {
-		*errContext = append(*errContext, map[string]interface{}{
-			constants.ErrorCode:    12,
-			constants.ErrorMessage: "Cannot establish connection to host",
-			constants.Error:        err.Error(),
-		})
-		return
+		client.SetContext(jsonInput, credential.(map[string]interface{}))
+
+		isValid, _ := client.Init()
+
+		if isValid {
+			jsonInput[constants.Result] = map[string]interface{}{constants.ObjectIP: jsonInput[constants.ObjectIP].(string)}
+
+			jsonInput["credential.profile.id"] = credential.(map[string]interface{})["credential.id"].(float64)
+			return
+		}
 	}
-	//
-	//_, err = client.ExecuteCommand("uptime")
-	//
-	//if err != nil {
-	//	*errContext = append(*errContext, map[string]interface{}{
-	//
-	//		constants.ErrorCode: 11,
-	//
-	//		constants.ErrorMessage: "error in the command",
-	//
-	//		constants.Error: err.Error(),
-	//	})
-	//
-	//	return
-	//
-	//}
 
-	jsonInput[constants.Result] = map[string]interface{}{constants.ObjectIP: jsonInput[constants.ObjectIP].(string)}
+	jsonInput["credential.profile.id"] = -1
 
+	logger.Trace("returning to bootstrap")
 }
 
 func Collect(jsonInput map[string]interface{}, errContext *[]map[string]interface{}) {
+
+	defer func() {
+		if err := recover(); err != nil {
+
+			logger.Error(fmt.Sprintf("%v", err))
+
+			*errContext = append(*errContext, map[string]interface{}{
+				constants.ErrorCode:    21,
+				constants.ErrorMessage: "formating problem",
+				constants.Error:        err,
+			})
+		}
+	}()
+
 	var err error
 
 	client := SSHclient.Client{}
 
-	client.SetContext(jsonInput)
+	var credential = jsonInput["credentials"].([]interface{})
 
-	isValid := client.Init(jsonInput[constants.ObjectIP].(string), jsonInput[constants.ObjectPort].(float64), jsonInput[constants.ObjectHost].(string), jsonInput[constants.ObjectPassword].(string))
+	client.SetContext(jsonInput, credential[0].(map[string]interface{}))
+
+	isValid, err := client.Init()
 
 	if !isValid {
 		*errContext = append(*errContext, map[string]interface{}{
@@ -79,17 +98,15 @@ func Collect(jsonInput map[string]interface{}, errContext *[]map[string]interfac
 			constants.Error: err.Error(),
 		})
 
+		logger.Error(fmt.Sprintf("error in the command: %s", err.Error()))
+
 		return
 
 	}
 	err = client.Close()
 
 	if err != nil {
-		*errContext = append(*errContext, map[string]interface{}{
-			constants.ErrorCode:    15,
-			constants.ErrorMessage: "error in closing ssh connection",
-			constants.Error:        err.Error(),
-		})
+		logger.Error(fmt.Sprintf("error in closing ssh connection: %s", err.Error()))
 	}
 
 	lines := strings.Split(string(queryOutput), "\n")
@@ -105,6 +122,8 @@ func Collect(jsonInput map[string]interface{}, errContext *[]map[string]interfac
 				constants.ErrorMessage: "error in the reading output lines",
 				constants.Error:        "out of index",
 			})
+
+			logger.Error(fmt.Sprintf("error in the reading output lines: %s", err.Error()))
 		}
 		return
 	}()

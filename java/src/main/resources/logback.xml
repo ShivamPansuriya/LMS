@@ -15,13 +15,68 @@
         </encoder>
     </appender>
 
+    <appender name="Credential_File" class="ch.qos.logback.core.FileAppender">
+        <file>credential.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="Discovery_File" class="ch.qos.logback.core.FileAppender">
+        <file>discovery.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="Plugin_File" class="ch.qos.logback.core.FileAppender">
+        <file>plugin.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="Route_File" class="ch.qos.logback.core.FileAppender">
+        <file>routes.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="Provision_File" class="ch.qos.logback.core.FileAppender">
+        <file>provision.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
     <!-- Root Logger -->
     <root level="info">
         <appender-ref ref="STDOUT" />
     </root>
 
     <!-- Logger for Server -->
-    <logger name="org.example.boostrap" level="info" additivity="false">
+    <logger name="org.example.boostrap" level="trace" additivity="false">
         <appender-ref ref="FILE_SERVER" />
+    </logger>
+
+    <logger name="org.example.credentialprofile.CredentialProfile" level="trace" additivity="false">
+        <appender-ref ref="Credential_File" />
+    </logger>
+
+    <logger name="org.example.discovery.Discovery" level="trace" additivity="false">
+        <appender-ref ref="Discovery_File" />
+    </logger>
+
+    <logger name="org.example.pluginengine.PluginEngine" level="trace" additivity="false">
+        <appender-ref ref="Plugin_File" />
+    </logger>
+
+    <logger name="org.example.route.Routes" level="trace" additivity="false">
+        <appender-ref ref="Route_File" />
+    </logger>
+
+    <logger name="org.example.provision.Provision" level="trace" additivity="false">
+        <appender-ref ref="Provision_File" />
     </logger>
 </configuration>
