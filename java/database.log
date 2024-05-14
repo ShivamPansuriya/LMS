@@ -1,0 +1,160 @@
+[2024-05-14 16:02:00.261] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:02:05.638] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:02:15.644] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:02:25.640] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:02:35.643] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:02:45.644] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:02:55.644] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:03:05.642] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:03:15.642] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:03:25.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:03:35.642] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:03:45.642] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:03:45.924] [INFO ] [DBHandler.java:123] {"id":0,"status":"success"}
+[2024-05-14 16:03:55.643] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:04:05.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:04:06.843] [INFO ] [DBHandler.java:265] {"0":{"object.host":"shivam","object.password":"9898"},"status":"success"}
+[2024-05-14 16:04:15.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:04:24.993] [ERROR] [DBHandler.java:275] {"status":"fail","error":{"error":"GET ERROR","error.code":404,"message":"error in getting discovery"}}
+[2024-05-14 16:04:25.640] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:04:35.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:04:36.457] [INFO ] [DBHandler.java:123] {"id":1,"status":"success"}
+[2024-05-14 16:04:38.695] [INFO ] [DBHandler.java:265] {"1":{"object.ip":"10.20.40.239","object.port":"22","credentials":[1]},"status":"success"}
+[2024-05-14 16:04:45.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:04:54.133] [INFO ] [DBHandler.java:265] {"discovery.data":[{"discovery":{"object.ip":"10.20.40.239","object.port":"22","credentials":[1]},"credentials":[]}],"status":"success"}
+[2024-05-14 16:04:55.640] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:05:05.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:05:14.554] [INFO ] [DBHandler.java:265] {"discovery.data":[{"discovery":{"object.ip":"10.20.40.239","object.port":"22","credentials":[1]},"credentials":[]}],"status":"success"}
+[2024-05-14 16:05:15.640] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:05:25.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:05:28.612] [INFO ] [DBHandler.java:265] {"1":{"object.ip":"10.20.40.239","object.port":"22","credentials":[1]},"status":"success"}
+[2024-05-14 16:05:35.644] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:05:45.643] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:05:55.643] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:06:05.643] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:06:15.642] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:06:25.643] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:06:35.642] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:06:45.644] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:06:55.643] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:07:05.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:07:15.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:07:25.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:07:35.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:07:45.320] [INFO ] [DBHandler.java:265] {"discovery.data":[{"discovery":{"object.ip":"10.20.40.239","object.port":"22","credentials":[1]},"credentials":[]}],"status":"success"}
+[2024-05-14 16:07:50.331] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:07:58.884] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:09:04.104] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:09:04.104] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:09:04.105] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:09:04.106] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:09:04.107] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:09:04.108] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:09:05.633] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:09:15.640] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:09:25.641] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:09:35.640] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.833] [INFO ] [DBHandler.java:265] {"discovery.data":[{"discovery":{"object.ip":"10.20.40.239","object.port":"22","credentials":[1]},"credentials":[]}],"status":"success"}
+[2024-05-14 16:12:59.835] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.836] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.836] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.837] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.838] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.838] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.839] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.840] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.840] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.841] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.842] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.842] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.843] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.844] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.844] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.845] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.845] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.846] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.846] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:12:59.847] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:13:05.636] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:13:15.640] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:13:25.640] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:13:35.642] [INFO ] [DBHandler.java:265] {"poll.time":{},"status":"success"}
+[2024-05-14 16:13:53.008] [INFO ] [DBHandler.java:123] {"id":0,"status":"success"}
+[2024-05-14 16:14:14.024] [INFO ] [DBHandler.java:123] {"id":1,"status":"success"}
+[2024-05-14 16:14:20.123] [INFO ] [DBHandler.java:123] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 16:14:28.332] [INFO ] [DBHandler.java:123] {"id":2,"status":"success"}
+[2024-05-14 16:14:28.414] [ERROR] [DBHandler.java:133] {"status":"fail","error":{"error":"INSERTION ERROR","error.code":502,"message":"error in saving Provision.set"}}
+[2024-05-14 16:15:01.812] [ERROR] [DBHandler.java:133] {"status":"fail","error":{"error":"INSERTION ERROR","error.code":502,"message":"error in saving Provision.set"}}
+[2024-05-14 16:16:34.145] [ERROR] [DBHandler.java:133] {"status":"fail","error":{"error":"INSERTION ERROR","error.code":502,"message":"error in saving Provision.set"}}
+[2024-05-14 16:16:40.376] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:16:40.381] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:16:40.390] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:16:40.416] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:16:46.476] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:16:46.485] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:16:46.487] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:17:07.482] [INFO ] [DBHandler.java:123] {"id":6,"status":"success"}
+[2024-05-14 16:17:26.923] [INFO ] [DBHandler.java:123] {"id":7,"status":"success"}
+[2024-05-14 16:17:31.819] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:17:34.802] [INFO ] [DBHandler.java:123] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 16:18:01.867] [INFO ] [DBHandler.java:123] {"id":8,"status":"success"}
+[2024-05-14 16:18:31.601] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:18:45.369] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:19:31.723] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:19:44.147] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:20:31.405] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:20:46.811] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:21:31.743] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:21:37.432] [INFO ] [DBHandler.java:333] {"message":"Credential profile updated successfully","status":"success"}
+[2024-05-14 16:21:45.583] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:22:31.550] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:22:40.367] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:23:12.314] [INFO ] [DBHandler.java:333] {"message":"Credential profile updated successfully","status":"success"}
+[2024-05-14 16:23:31.568] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 16:23:44.169] [INFO ] [DBHandler.java:123] {"message":"poll data saved","status":"success"}
+[2024-05-14 17:25:06.992] [INFO ] [DBHandler.java:122] {"id":0,"status":"success"}
+[2024-05-14 17:26:22.237] [INFO ] [DBHandler.java:122] {"id":1,"status":"success"}
+[2024-05-14 18:00:24.202] [INFO ] [DBHandler.java:122] {"id":0,"status":"success"}
+[2024-05-14 18:00:39.540] [INFO ] [DBHandler.java:122] {"id":1,"status":"success"}
+[2024-05-14 18:00:59.178] [INFO ] [DBHandler.java:122] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 18:01:07.451] [INFO ] [DBHandler.java:122] {"id":2,"status":"success"}
+[2024-05-14 18:02:04.804] [INFO ] [DBHandler.java:122] {"message":"poll data saved","status":"success"}
+[2024-05-14 18:03:04.070] [INFO ] [DBHandler.java:122] {"message":"poll data saved","status":"success"}
+[2024-05-14 18:04:10.669] [INFO ] [DBHandler.java:122] {"id":0,"status":"success"}
+[2024-05-14 18:04:13.924] [INFO ] [DBHandler.java:122] {"id":1,"status":"success"}
+[2024-05-14 18:04:35.030] [INFO ] [DBHandler.java:122] {"id":2,"status":"success"}
+[2024-05-14 18:12:18.987] [ERROR] [DBHandler.java:132] {"status":"fail","error":{"error":"INSERTION ERROR","error.code":502,"message":"error in saving Provision.set"}}
+[2024-05-14 18:18:18.295] [INFO ] [DBHandler.java:124] {"message":"Already provisioned or run discovery before provision","status":"success"}
+[2024-05-14 18:24:02.485] [INFO ] [DBHandler.java:124] {"id":0,"status":"success"}
+[2024-05-14 18:24:10.130] [INFO ] [DBHandler.java:124] {"id":1,"status":"success"}
+[2024-05-14 18:24:10.168] [INFO ] [DBHandler.java:124] {"id":2,"status":"success"}
+[2024-05-14 18:24:18.775] [INFO ] [DBHandler.java:124] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 18:24:19.301] [INFO ] [DBHandler.java:124] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 18:24:20.054] [INFO ] [DBHandler.java:124] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 18:24:20.797] [INFO ] [DBHandler.java:124] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 18:24:21.569] [INFO ] [DBHandler.java:124] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 18:24:22.305] [INFO ] [DBHandler.java:124] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 18:24:23.041] [INFO ] [DBHandler.java:124] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 18:24:23.753] [INFO ] [DBHandler.java:124] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 18:26:56.098] [INFO ] [DBHandler.java:124] {"id":3,"message":"Already provisioned or run discovery before provision","status":"success"}
+[2024-05-14 18:26:58.831] [INFO ] [DBHandler.java:124] {"message":"Already provisioned or run discovery before provision","status":"success"}
+[2024-05-14 18:27:01.700] [INFO ] [DBHandler.java:124] {"message":"Already provisioned or run discovery before provision","status":"success"}
+[2024-05-14 18:27:23.378] [INFO ] [DBHandler.java:124] {"message":"Already provisioned or run discovery before provision","status":"success"}
+[2024-05-14 18:27:29.921] [INFO ] [DBHandler.java:124] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 18:27:33.179] [INFO ] [DBHandler.java:124] {"id":7,"message":"Already provisioned or run discovery before provision","status":"success"}
+[2024-05-14 18:27:51.949] [INFO ] [DBHandler.java:124] {"message":"poll data saved","status":"success"}
+[2024-05-14 18:28:32.019] [INFO ] [DBHandler.java:124] {"message":"poll data saved","status":"success"}
+[2024-05-14 18:28:51.216] [INFO ] [DBHandler.java:124] {"message":"poll data saved","status":"success"}
+[2024-05-14 18:29:31.279] [INFO ] [DBHandler.java:124] {"message":"poll data saved","status":"success"}
+[2024-05-14 18:29:51.485] [INFO ] [DBHandler.java:124] {"message":"poll data saved","status":"success"}
+[2024-05-14 18:30:31.699] [INFO ] [DBHandler.java:124] {"message":"poll data saved","status":"success"}
+[2024-05-14 18:30:51.849] [INFO ] [DBHandler.java:124] {"message":"poll data saved","status":"success"}
+[2024-05-14 18:34:16.010] [INFO ] [DBHandler.java:126] {"id":0,"status":"success"}
+[2024-05-14 18:34:21.747] [INFO ] [DBHandler.java:126] {"id":1,"status":"success"}
+[2024-05-14 18:34:27.026] [INFO ] [DBHandler.java:126] {"message":"discovery run successfully","status":"success"}
+[2024-05-14 18:53:44.301] [ERROR] [DBHandler.java:153] {"status":"fail","error":{"error":"INSERTION ERROR","error.code":502,"message":"error in saving discovery"}}
+[2024-05-14 18:53:45.916] [ERROR] [DBHandler.java:153] {"status":"fail","error":{"error":"INSERTION ERROR","error.code":502,"message":"error in saving discovery"}}
+[2024-05-14 18:53:50.848] [INFO ] [DBHandler.java:143] {"id":0,"status":"success"}
+[2024-05-14 18:53:56.099] [INFO ] [DBHandler.java:143] {"id":1,"status":"success"}
+[2024-05-14 18:55:00.285] [ERROR] [DBHandler.java:153] {"status":"fail","error":{"error":"INSERTION ERROR","error.code":502,"message":"error in saving discovery"}}
+[2024-05-14 18:55:02.117] [ERROR] [DBHandler.java:153] {"status":"fail","error":{"error":"INSERTION ERROR","error.code":502,"message":"error in saving discovery"}}

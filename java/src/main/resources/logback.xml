@@ -37,7 +37,7 @@
     </appender>
 
     <appender name="Route_File" class="ch.qos.logback.core.FileAppender">
-        <file>routes.log</file>
+        <file>api.log</file>
         <encoder>
             <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
         </encoder>
@@ -50,33 +50,44 @@
         </encoder>
     </appender>
 
+    <appender name="Database_File" class="ch.qos.logback.core.FileAppender">
+        <file>database.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
     <!-- Root Logger -->
     <root level="info">
         <appender-ref ref="STDOUT" />
     </root>
 
     <!-- Logger for Server -->
-    <logger name="org.example.boostrap" level="trace" additivity="false">
+    <logger name="com.motadata.Boostrap" level="trace" additivity="false">
         <appender-ref ref="FILE_SERVER" />
     </logger>
 
-    <logger name="org.example.credentialprofile.CredentialProfile" level="trace" additivity="false">
+    <logger name="com.motadata.credentialprofile.CredentialProfile" level="trace" additivity="false">
         <appender-ref ref="Credential_File" />
     </logger>
 
-    <logger name="org.example.discovery.Discovery" level="trace" additivity="false">
+    <logger name="com.motadata.discovery.Discovery" level="trace" additivity="false">
         <appender-ref ref="Discovery_File" />
     </logger>
 
-    <logger name="org.example.pluginengine.PluginEngine" level="trace" additivity="false">
+    <logger name="com.motadata.pluginengine.PluginEngine" level="trace" additivity="false">
         <appender-ref ref="Plugin_File" />
     </logger>
 
-    <logger name="org.example.route.Routes" level="trace" additivity="false">
+    <logger name="com.motadata.route.APIEngine" level="trace" additivity="false">
         <appender-ref ref="Route_File" />
     </logger>
 
-    <logger name="org.example.provision.Provision" level="trace" additivity="false">
+    <logger name="com.motadata.provision.Provision" level="trace" additivity="false">
         <appender-ref ref="Provision_File" />
+    </logger>
+
+    <logger name="com.motadata.database.DBHandler" level="trace" additivity="false">
+        <appender-ref ref="Database_File" />
     </logger>
 </configuration>

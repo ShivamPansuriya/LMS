@@ -25,7 +25,7 @@ type Client struct {
 }
 
 func (client *Client) SetContext(context map[string]interface{}, credential map[string]interface{}) {
-	client.logger = logger.NewLogger("client", "SSH Client")
+	client.logger = logger.NewLogger("goEngine/client", "SSH Client")
 
 	client.ip = context[constants.ObjectIP].(string)
 
@@ -75,8 +75,6 @@ func (client *Client) Init() (bool, error) {
 	sshConnection, err := ssh.Dial("tcp", connectStr, config)
 
 	client.client = sshConnection
-
-	client.logger.Info("hello")
 
 	if err != nil {
 

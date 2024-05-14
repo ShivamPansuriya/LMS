@@ -1,0 +1,3 @@
+2024-05-14 17:09:52.194605757 Info Boostrap Started
+2024-05-14 17:10:02.2025481 Info [map[credential.profile.id:-1 credentials:[map[credential.id:6.830071733899127e+18 object.host:shivam object.password:9898]] device.type:linux object.ip:192.168.1.14 object.port:22 request.type:Discovery status:success]]
+2024-05-14 17:10:02.202905462 Info Boostrap Ended

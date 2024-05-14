@@ -1,36 +1,176 @@
-[2024-05-13 12:10:24.133] [INFO ] [boostrap.java:21] started
-[2024-05-13 12:10:24.360] [INFO ] [boostrap.java:36] verticle deployed
-[2024-05-13 21:18:31.454] [INFO ] [boostrap.java:22] started
-[2024-05-13 21:18:31.755] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 21:35:39.461] [INFO ] [boostrap.java:22] started
-[2024-05-13 21:35:39.741] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 21:38:57.328] [INFO ] [boostrap.java:22] started
-[2024-05-13 21:38:57.607] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 21:39:48.948] [INFO ] [boostrap.java:22] started
-[2024-05-13 21:39:49.226] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 21:40:33.007] [INFO ] [boostrap.java:22] started
-[2024-05-13 21:40:33.299] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 21:41:41.609] [INFO ] [boostrap.java:22] started
-[2024-05-13 21:41:41.904] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 21:41:55.772] [INFO ] [boostrap.java:22] started
-[2024-05-13 21:41:56.053] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 21:50:53.140] [INFO ] [boostrap.java:22] started
-[2024-05-13 21:50:53.412] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 21:53:19.817] [INFO ] [boostrap.java:22] started
-[2024-05-13 21:53:20.107] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 21:58:04.853] [INFO ] [boostrap.java:22] started
-[2024-05-13 21:58:05.141] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 22:04:21.371] [INFO ] [boostrap.java:22] started
-[2024-05-13 22:04:21.664] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 22:08:25.616] [INFO ] [boostrap.java:22] started
-[2024-05-13 22:08:25.899] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 22:22:41.731] [INFO ] [boostrap.java:22] started
-[2024-05-13 22:22:42.004] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 22:23:48.572] [INFO ] [boostrap.java:22] started
-[2024-05-13 22:23:49.025] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 22:41:57.424] [INFO ] [boostrap.java:22] started
-[2024-05-13 22:41:57.737] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 22:46:59.929] [INFO ] [boostrap.java:22] started
-[2024-05-13 22:47:00.207] [INFO ] [boostrap.java:37] verticle deployed
-[2024-05-13 22:47:27.578] [INFO ] [boostrap.java:22] started
-[2024-05-13 22:47:27.887] [INFO ] [boostrap.java:37] verticle deployed
+[2024-05-14 12:44:48.811] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 12:44:49.118] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 12:44:49.141] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 12:44:49.141] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 12:44:49.141] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 12:44:49.142] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 12:44:49.142] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 12:44:49.297] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 14:14:31.671] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 14:14:31.899] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 14:14:31.910] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 14:14:31.911] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 14:14:31.911] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 14:14:31.911] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 14:14:31.911] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 14:14:32.025] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 14:18:28.364] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 14:18:28.698] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 14:18:28.720] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 14:18:28.721] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 14:18:28.722] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 14:18:28.722] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 14:18:28.723] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 14:18:28.867] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 14:21:09.099] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 14:21:09.389] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 14:21:09.401] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 14:21:09.401] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 14:21:09.402] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 14:21:09.402] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 14:21:09.402] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 14:21:09.542] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 15:54:26.328] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 15:54:26.615] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 15:54:26.626] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 15:54:26.627] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 15:54:26.627] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 15:54:26.628] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 15:54:26.629] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 15:54:26.767] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 15:55:19.985] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 15:55:20.261] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 15:55:20.271] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 15:55:20.271] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 15:55:20.272] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 15:55:20.272] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 15:55:20.272] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 15:55:20.409] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 15:57:54.341] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 15:57:54.625] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 15:57:54.640] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 15:57:54.640] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 15:57:54.641] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 15:57:54.641] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 15:57:54.641] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 15:57:54.777] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 16:01:45.327] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 16:01:45.621] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 16:01:45.632] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 16:01:45.633] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 16:01:45.634] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 16:01:45.634] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 16:01:45.634] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 16:01:45.775] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 16:13:46.754] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 16:13:47.031] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 16:13:47.046] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 16:13:47.046] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 16:13:47.047] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 16:13:47.047] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 16:13:47.047] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 16:13:47.188] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 16:32:58.226] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 16:32:58.517] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 16:32:58.529] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 16:32:58.530] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 16:32:58.530] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 16:32:58.531] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 16:32:58.531] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 16:32:58.671] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 16:43:06.202] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 16:43:06.492] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 16:43:06.508] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 16:43:06.508] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 16:43:06.509] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 16:43:06.509] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 16:43:06.510] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 16:43:06.650] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 16:51:55.433] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 16:51:55.702] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 16:51:55.710] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 16:51:55.710] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 16:51:55.711] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 16:51:55.711] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 16:51:55.711] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 16:51:55.878] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 17:24:56.884] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 17:24:57.187] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 17:24:57.204] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 17:24:57.205] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 17:24:57.205] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 17:24:57.205] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 17:24:57.206] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 17:24:57.369] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 18:00:19.173] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 18:00:19.468] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 18:00:19.485] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 18:00:19.485] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 18:00:19.486] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 18:00:19.486] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 18:00:19.486] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 18:00:19.626] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 18:03:52.559] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 18:03:52.852] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 18:03:52.864] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 18:03:52.864] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 18:03:52.865] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 18:03:52.865] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 18:03:52.865] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 18:03:53.004] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 18:11:50.103] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 18:11:50.408] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 18:11:50.423] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 18:11:50.424] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 18:11:50.424] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 18:11:50.424] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 18:11:50.424] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 18:11:50.574] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 18:16:51.988] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 18:16:52.290] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 18:16:52.306] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 18:16:52.307] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 18:16:52.307] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 18:16:52.307] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 18:16:52.308] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 18:16:52.446] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 18:18:15.612] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 18:18:15.899] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 18:18:15.912] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 18:18:15.913] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 18:18:15.913] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 18:18:15.914] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 18:18:15.914] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 18:18:16.051] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 18:23:56.478] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 18:23:56.776] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 18:23:56.787] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 18:23:56.788] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 18:23:56.788] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 18:23:56.788] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 18:23:56.788] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 18:23:56.944] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 18:34:05.648] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 18:34:05.899] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 18:34:05.915] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 18:34:05.916] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 18:34:05.917] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 18:34:05.917] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 18:34:05.917] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 18:34:06.039] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 18:53:31.615] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 18:53:31.864] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 18:53:31.873] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 18:53:31.873] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 18:53:31.874] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 18:53:31.874] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 18:53:31.875] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 18:53:31.990] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 18:54:55.602] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 18:54:55.918] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 18:54:55.929] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 18:54:55.930] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 18:54:55.930] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 18:54:55.930] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 18:54:55.931] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 18:54:56.089] [INFO ] [Boostrap.java:30] API Engine started

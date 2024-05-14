@@ -9,7 +9,101 @@ import (
 	"strings"
 )
 
-var logger = PluginLogger.NewLogger("plugins/linux", "plugin")
+const (
+	VENDOR = "system.vendor"
+
+	SYSTEM_NAME = "system.os.name"
+
+	SYSTEM_VERSION = "system.os.version"
+
+	START_TIME = "started.time"
+
+	START_TIME_SECOND = "started.time.seconds"
+
+	SYSTEM_MODEL = "system.model"
+
+	SYSTEM_PRODUCT = "system.product"
+
+	INTERRUPT_PER_SECONDS = "system.interrupts.per.sec"
+
+	SYSTEM_CPU_IO_PERCENT = "system.cpu.io.percent"
+
+	SYSTEM_RUNNING_PROCESSES = "system.running.processes"
+
+	SYSTEM_NETWORK_UDP_CONNECTIONS = "system.network.udp.connections"
+
+	SYSTEM_NETWORK_TCP_CONNECTIONS = "system.network.tcp.connections"
+
+	SYSTEM_NETWORK_TCP_RETRANSMISSIONS = "system.network.tcp.retransmissions"
+
+	SYSTEM_NETWORK_ERROR_PACKETS = "system.network.error.packets"
+
+	SYSTEM_NETWORK_OUT_BYTES_RATE = "system.network.out.bytes.rate"
+
+	SYSTEM_MEMORY_TOTAL_BYTES = "system.memory.total.bytes"
+
+	SYSTEM_MEMORY_AVAILABLE_BYTES = "system.memory.available.bytes"
+
+	SYSTEM_CACHE_MEMORY_BYTES = "system.cache.memory.bytes"
+
+	SYSTEM_SWAP_MEMORY_PROVISIONED = "system.swap.memory.provisioned.bytes"
+
+	SYSTEM_SWAP_MEMORY_USED = "system.swap.memory.used.bytes"
+
+	SYSTEM_SWAP_MEMORY_USED_PERCENT = "system.swap.memory.used.percent"
+
+	SYSTEM_SWAP_MEMORY_FREE_PERCENT = "system.swap.memory.free.percent"
+
+	SYSTEM_BUFFER_MEMORY_BYTES = "system.buffer.memory.bytes"
+
+	SYSTEM_MEMORY_USED_BYTES = "system.memory.used.bytes"
+
+	SYSTEM_MEMORY_FREE_BYTES = "system.memory.free.bytes"
+
+	SYSTEM_MEMORY_FREE_PERCENT = "system.memory.free.percent"
+
+	SYSTEM_MEMORY_USED_PERCENT = "system.memory.used.percent"
+
+	SYSTEM_OVERALL_MEMORY_FREE_PERCENT = "system.overall.memory.free.percent"
+
+	SYSTEM_OPENED_FILE_DESCRIPTORS = "system.opened.file.descriptors"
+
+	SYSTEM_DISK_CAPACITY_BYTES = "system.disk.capacity.bytes"
+
+	SYSTEM_DISK_FREE_BYTES = "system.disk.free.bytes"
+
+	SYSTEM_DISK_FREE_PERCENT = "system.disk.free.percent"
+
+	SYSTEM_DISK_USED_PERCENT = "system.disk.used.percent"
+
+	SYSTEM_DISK_USED_BYTES = "system.disk.used.bytes"
+
+	SYSTEM_DISK_IO_TIME_PERCENT = "system.disk.io.time.percent"
+
+	SYSTEM_LOAD_AVG1_MIN = "system.load.avg1.min"
+
+	SYSTEM_LOAD_AVG5_MIN = "system.load.avg5.min"
+
+	SYSTEM_LOAD_AVG15_MIN = "system.load.avg15.min"
+
+	SYSTEM_CPU_INTERRUPT_PERCENT = "system.cpu.interrupt.percent"
+
+	SYSTEM_CPU_USER_PERCENT = "system.cpu.user.percent"
+
+	SYSTEM_CPU_PERCENT = "system.cpu.percent"
+
+	SYSTEM_CPU_KERNEL_PERCENT = "system.cpu.kernel.percent"
+
+	SYSTEM_CPU_IDLE_PERCENT = "system.cpu.idle.percent"
+
+	SYSTEM_CPU_TYPE = "system.cpu.type"
+
+	SYSTEM_CPU_CORE = "system.cpu.core"
+
+	SYSTEM_CONTEXT_SWITCHES_PER_SEC = "system.context.switches.per.sec"
+)
+
+var logger = PluginLogger.NewLogger("goEngine/plugin", "plugin")
 
 func Discovery(jsonInput map[string]interface{}, errContext *[]map[string]interface{}) {
 
@@ -40,6 +134,7 @@ func Discovery(jsonInput map[string]interface{}, errContext *[]map[string]interf
 			jsonInput[constants.Result] = map[string]interface{}{constants.ObjectIP: jsonInput[constants.ObjectIP].(string)}
 
 			jsonInput["credential.profile.id"] = credential.(map[string]interface{})["credential.id"].(float64)
+
 			return
 		}
 	}
@@ -128,125 +223,125 @@ func Collect(jsonInput map[string]interface{}, errContext *[]map[string]interfac
 		return
 	}()
 
-	output["system.vendor"] = lines[0]
+	output[VENDOR] = lines[0]
 
 	osValues := strings.Split(lines[1], " ")
 
-	output["system.os.name"] = osValues[0]
+	output[SYSTEM_NAME] = osValues[0]
 
-	output["system.os.version"] = osValues[1]
+	output[SYSTEM_VERSION] = osValues[1]
 
-	output["started.time"] = lines[2]
+	output[START_TIME] = lines[2]
 
-	output["started.time.seconds"], _ = strconv.ParseFloat(lines[3], 64)
+	output[START_TIME_SECOND], _ = strconv.ParseFloat(lines[3], 64)
 
-	output["system.model"] = lines[4]
+	output[SYSTEM_MODEL] = lines[4]
 
-	output["system.model"] = lines[5]
+	output[SYSTEM_PRODUCT] = lines[5]
 
-	output["system.interrupts.per.sec"], _ = strconv.ParseFloat(lines[6], 64)
+	output[INTERRUPT_PER_SECONDS], _ = strconv.ParseFloat(lines[6], 64)
 
-	output["system.cpu.io.percent"], _ = strconv.ParseFloat(lines[7], 64)
+	output[SYSTEM_CPU_IO_PERCENT], _ = strconv.ParseFloat(lines[7], 64)
 
-	output["system.running.processes"], _ = strconv.ParseFloat(lines[8], 64)
+	output[SYSTEM_RUNNING_PROCESSES], _ = strconv.ParseFloat(lines[8], 64)
 
-	output["system.network.udp.connections"], _ = strconv.ParseFloat(lines[9], 64)
+	output[SYSTEM_NETWORK_UDP_CONNECTIONS], _ = strconv.ParseFloat(lines[9], 64)
 
-	output["system.network.tcp.connections"], _ = strconv.ParseFloat(lines[10], 64)
+	output[SYSTEM_NETWORK_TCP_CONNECTIONS], _ = strconv.ParseFloat(lines[10], 64)
 
-	output["system.network.tcp.retransmissions"], _ = strconv.ParseFloat(lines[11], 64)
+	output[SYSTEM_NETWORK_TCP_RETRANSMISSIONS], _ = strconv.ParseFloat(lines[11], 64)
 
-	output["system.network.error.packets"], _ = strconv.ParseFloat(lines[12], 64)
+	output[SYSTEM_NETWORK_ERROR_PACKETS], _ = strconv.ParseFloat(lines[12], 64)
 
-	output["system.network.out.bytes.rate"], _ = strconv.ParseFloat(lines[13], 64)
+	output[SYSTEM_NETWORK_OUT_BYTES_RATE], _ = strconv.ParseFloat(lines[13], 64)
 
 	systemMemoryValue := strings.Split(lines[14], " ")
 
-	output["system.memory.total.bytes"], _ = strconv.ParseFloat(systemMemoryValue[0], 64)
+	output[SYSTEM_MEMORY_TOTAL_BYTES], _ = strconv.ParseFloat(systemMemoryValue[0], 64)
 
-	output["system.memory.available.bytes"], _ = strconv.ParseFloat(systemMemoryValue[1], 64)
+	output[SYSTEM_MEMORY_AVAILABLE_BYTES], _ = strconv.ParseFloat(systemMemoryValue[1], 64)
 
-	output["system.cache.memory.bytes"], _ = strconv.ParseFloat(systemMemoryValue[2], 64)
+	output[SYSTEM_CACHE_MEMORY_BYTES], _ = strconv.ParseFloat(systemMemoryValue[2], 64)
 
 	swapMemoryValue := strings.Split(lines[15], " ")
 
 	swapProvidedValue, _ := strconv.ParseFloat(swapMemoryValue[0], 64)
 
-	output["system.swap.memory.provisioned.bytes"] = swapProvidedValue
+	output[SYSTEM_SWAP_MEMORY_PROVISIONED] = swapProvidedValue
 
 	swapFreeValue, _ := strconv.ParseFloat(swapMemoryValue[1], 64)
 
-	output["system.swap.memory.free.bytes"] = swapFreeValue
+	output[SYSTEM_MEMORY_FREE_BYTES] = swapFreeValue
 
 	swapUsedValue, _ := strconv.ParseFloat(swapMemoryValue[2], 64)
 
-	output["system.swap.memory.used.bytes"] = swapUsedValue
+	output[SYSTEM_SWAP_MEMORY_USED] = swapUsedValue
 
-	output["system.swap.memory.used.percent"] = (swapUsedValue / swapProvidedValue) * 100
+	output[SYSTEM_SWAP_MEMORY_USED_PERCENT] = (swapUsedValue / swapProvidedValue) * 100
 
-	output["system.swap.memory.free.percent"] = (swapFreeValue / swapProvidedValue) * 100
+	output[SYSTEM_SWAP_MEMORY_FREE_PERCENT] = (swapFreeValue / swapProvidedValue) * 100
 
-	output["system.buffer.memory.bytes"], _ = strconv.Atoi(lines[16])
+	output[SYSTEM_BUFFER_MEMORY_BYTES], _ = strconv.Atoi(lines[16])
 
 	systemMemoryValues := strings.Split(lines[17], " ")
 
-	output["system.memory.used.bytes"], _ = strconv.Atoi(systemMemoryValues[0])
+	output[SYSTEM_MEMORY_USED_BYTES], _ = strconv.Atoi(systemMemoryValues[0])
 
-	output["system.memory.free.bytes"], _ = strconv.Atoi(systemMemoryValues[1])
+	output[SYSTEM_MEMORY_FREE_BYTES], _ = strconv.Atoi(systemMemoryValues[1])
 
-	output["system.memory.free.percent"] = (output["system.memory.available.bytes"].(float64) / output["system.memory.total.bytes"].(float64)) * 100
+	output[SYSTEM_MEMORY_FREE_PERCENT] = (output[SYSTEM_MEMORY_AVAILABLE_BYTES].(float64) / output[SYSTEM_MEMORY_TOTAL_BYTES].(float64)) * 100
 
-	output["system.memory.used.percent"], _ = strconv.ParseFloat(lines[18], 64)
+	output[SYSTEM_MEMORY_USED_PERCENT], _ = strconv.ParseFloat(lines[18], 64)
 
-	output["system.overall.memory.free.percent"], _ = strconv.ParseFloat(lines[19], 64)
+	output[SYSTEM_OVERALL_MEMORY_FREE_PERCENT], _ = strconv.ParseFloat(lines[19], 64)
 
-	output["system.opened.file.descriptors"], _ = strconv.ParseFloat(lines[20], 64)
+	output[SYSTEM_OPENED_FILE_DESCRIPTORS], _ = strconv.ParseFloat(lines[20], 64)
 
 	systemDiskValue := strings.Split(lines[21], " ")
 
-	output["system.disk.capacity.bytes"], _ = strconv.ParseFloat(systemDiskValue[0], 64)
+	output[SYSTEM_DISK_CAPACITY_BYTES], _ = strconv.ParseFloat(systemDiskValue[0], 64)
 
-	output["system.disk.free.bytes"], _ = strconv.ParseFloat(systemDiskValue[1], 64)
+	output[SYSTEM_DISK_FREE_BYTES], _ = strconv.ParseFloat(systemDiskValue[1], 64)
 
-	output["system.disk.free.percent"], _ = strconv.ParseFloat(systemDiskValue[2], 64)
+	output[SYSTEM_DISK_FREE_PERCENT], _ = strconv.ParseFloat(systemDiskValue[2], 64)
 
-	output["system.disk.used.percent"], _ = strconv.ParseFloat(lines[22], 64)
+	output[SYSTEM_DISK_USED_PERCENT], _ = strconv.ParseFloat(lines[22], 64)
 
-	output["system.disk.used.bytes"], _ = strconv.ParseFloat(lines[23], 64)
+	output[SYSTEM_DISK_USED_BYTES], _ = strconv.ParseFloat(lines[23], 64)
 
-	output["system.disk.io.time.percent"], _ = strconv.ParseFloat(lines[24], 64)
+	output[SYSTEM_DISK_IO_TIME_PERCENT], _ = strconv.ParseFloat(lines[24], 64)
 
 	loadAverageValue := strings.Split(lines[25], " ")
 
-	output["system.load.avg1.min"], _ = strconv.ParseFloat(loadAverageValue[0][:len(loadAverageValue[0])-1], 64)
+	output[SYSTEM_LOAD_AVG1_MIN], _ = strconv.ParseFloat(loadAverageValue[0][:len(loadAverageValue[0])-1], 64)
 
-	output["system.load.avg5.min"], _ = strconv.ParseFloat(loadAverageValue[0][:len(loadAverageValue[1])-1], 64)
+	output[SYSTEM_LOAD_AVG5_MIN], _ = strconv.ParseFloat(loadAverageValue[0][:len(loadAverageValue[1])-1], 64)
 
-	output["system.load.avg15.min"], _ = strconv.ParseFloat(loadAverageValue[0][:len(loadAverageValue[2])], 64)
+	output[SYSTEM_LOAD_AVG15_MIN], _ = strconv.ParseFloat(loadAverageValue[0][:len(loadAverageValue[2])], 64)
 
-	output["system.interrupts.per.sec"], _ = strconv.ParseFloat(lines[26], 64)
+	output[INTERRUPT_PER_SECONDS], _ = strconv.ParseFloat(lines[26], 64)
 
-	output["system.cpu.interrupt.percent"] = float64((output["system.interrupts.per.sec"].(float64) / 3000000000) * 100)
+	output[SYSTEM_CPU_INTERRUPT_PERCENT] = (output[INTERRUPT_PER_SECONDS].(float64) / 3000000000) * 100
 
 	cpuPercentValue := strings.Split(lines[27], " ")
 
-	output["system.cpu.user.percent"], _ = strconv.ParseFloat(cpuPercentValue[0], 64)
+	output[SYSTEM_CPU_USER_PERCENT], _ = strconv.ParseFloat(cpuPercentValue[0], 64)
 
-	output["system.cpu.percent"], _ = strconv.ParseFloat(cpuPercentValue[1], 64)
+	output[SYSTEM_CPU_PERCENT], _ = strconv.ParseFloat(cpuPercentValue[1], 64)
 
-	output["system.cpu.io.percent"], _ = strconv.ParseFloat(lines[28], 64)
+	output[SYSTEM_CPU_IO_PERCENT], _ = strconv.ParseFloat(lines[28], 64)
 
 	systemCpuValues := strings.Split(lines[29], " ")
 
-	output["system.cpu.kernel.percent"], _ = strconv.ParseFloat(systemCpuValues[0], 64)
+	output[SYSTEM_CPU_KERNEL_PERCENT], _ = strconv.ParseFloat(systemCpuValues[0], 64)
 
-	output["system.cpu.idle.percent"], _ = strconv.ParseFloat(systemCpuValues[1], 64)
+	output[SYSTEM_CPU_IDLE_PERCENT], _ = strconv.ParseFloat(systemCpuValues[1], 64)
 
-	output["system.cpu.type"] = lines[30]
+	output[SYSTEM_CPU_TYPE] = lines[30]
 
-	output["system.cpu.core"], _ = strconv.ParseFloat(lines[31], 64)
+	output[SYSTEM_CPU_CORE], _ = strconv.ParseFloat(lines[31], 64)
 
-	output["system.context.switches.per.sec"], _ = strconv.ParseFloat(lines[32], 64)
+	output[SYSTEM_CONTEXT_SWITCHES_PER_SEC], _ = strconv.ParseFloat(lines[32], 64)
 
 	jsonInput[constants.Result] = output
 

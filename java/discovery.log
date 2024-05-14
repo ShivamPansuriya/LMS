@@ -1,0 +1,32 @@
+[2024-05-14 12:46:05.223] [WARN ] [CredentialProfile.java:69] unable to fetch credential profiles from DB
+[2024-05-14 12:50:35.312] [ERROR] [CredentialProfile.java:148] json invalid format: io.vertx.core.json.DecodeException: Failed to decode:No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+[2024-05-14 12:50:41.041] [INFO ] [CredentialProfile.java:123] not proper request format
+[2024-05-14 12:50:50.148] [WARN ] [CredentialProfile.java:139] unable to save credential profiles to DB
+[2024-05-14 12:51:01.322] [WARN ] [CredentialProfile.java:69] unable to fetch credential profiles from DB
+[2024-05-14 12:51:47.057] [INFO ] [CredentialProfile.java:84] not proper request format
+[2024-05-14 12:52:21.983] [WARN ] [CredentialProfile.java:100] unable to save credential profiles to DB
+[2024-05-14 12:53:11.458] [WARN ] [Discovery.java:69] unable to get discovery profiles from DB
+[2024-05-14 12:54:51.512] [WARN ] [Discovery.java:69] unable to get discovery profiles from DB
+[2024-05-14 12:56:24.336] [ERROR] [Discovery.java:55] not valid json format io.vertx.core.json.DecodeException: Failed to decode:Unexpected character ('"' (code 34)): was expecting comma to separate Object entries
+ at [Source: (String)"{
+  "object.ip":"10.20.40.239",
+  "object.port": "22"
+  "credentials":[1]
+}"; line: 4, column: 4]
+[2024-05-14 12:57:49.234] [WARN ] [Discovery.java:187] unable to UPDATE discovery profiles to DB
+[2024-05-14 14:31:46.433] [WARN ] [CredentialProfile.java:139] unable to save credential profiles to DB
+[2024-05-14 14:31:56.643] [WARN ] [CredentialProfile.java:139] unable to save credential profiles to DB
+[2024-05-14 14:32:02.678] [WARN ] [CredentialProfile.java:139] unable to save credential profiles to DB
+[2024-05-14 14:43:53.432] [WARN ] [Discovery.java:118] all given credentials are invalid. request: {"discovery.data":[{"discovery":{"object.ip":"10.20.40.239","object.port":"22","credentials":[4]},"credentials":[{"object.host":"","object.password":"9898","credential.id":4}]}],"status":"success"}
+[2024-05-14 16:04:24.994] [WARN ] [Discovery.java:71] unable to get discovery profiles from DB
+[2024-05-14 16:04:54.151] [WARN ] [Discovery.java:119] all given credentials are invalid. request: {"discovery.data":[{"discovery":{"object.ip":"10.20.40.239","object.port":"22","credentials":[1]},"credentials":[]}],"status":"success"}
+[2024-05-14 16:05:14.565] [WARN ] [Discovery.java:119] all given credentials are invalid. request: {"discovery.data":[{"discovery":{"object.ip":"10.20.40.239","object.port":"22","credentials":[1]},"credentials":[]}],"status":"success"}
+[2024-05-14 16:09:04.114] [WARN ] [Discovery.java:119] all given credentials are invalid. request: {"discovery.data":[{"discovery":{"object.ip":"10.20.40.239","object.port":"22","credentials":[1]},"credentials":[]}],"status":"success"}
+[2024-05-14 16:33:03.295] [ERROR] [CredentialProfile.java:53] json invalid format: io.vertx.core.json.DecodeException: Failed to decode:No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+[2024-05-14 16:52:03.788] [INFO ] [CredentialProfile.java:28] not proper request format
+[2024-05-14 18:53:44.301] [WARN ] [Discovery.java:43] unable to save discovery profiles to DB
+[2024-05-14 18:53:45.916] [WARN ] [Discovery.java:43] unable to save discovery profiles to DB
+[2024-05-14 18:55:00.286] [WARN ] [Discovery.java:43] unable to save discovery profiles to DB
+[2024-05-14 18:55:02.117] [WARN ] [Discovery.java:43] unable to save discovery profiles to DB

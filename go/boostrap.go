@@ -8,13 +8,37 @@ import (
 	"motadata-lite/utils/constants"
 	"motadata-lite/utils/logger"
 	"os"
+	"sync"
 )
 
 func main() {
-
 	// Set the output of the logger to the file
 
-	logger := logger.NewLogger("logs", "main")
+	logger := logger.NewLogger("goEngine/logs", "main")
+
+	logger.Info("plugin engine started")
+
+	var jsonInput []map[string]interface{}
+
+	if len(os.Args) != 2 {
+
+		logger.Fatal(fmt.Sprintf("not valid argument size"))
+
+		logger.Info("plugin engine stopped")
+
+		error := map[string]interface{}{
+			constants.Error: map[string]interface{}{
+				constants.Error:        "os.args error",
+				constants.ErrorMessage: "not valid arguments",
+				constants.ErrorCode:    20,
+			},
+		}
+		jsonInput = append(jsonInput, error)
+
+		send(jsonInput)
+
+		return
+	}
 
 	decodedBytes, err := base64.StdEncoding.DecodeString(os.Args[1])
 
@@ -24,11 +48,22 @@ func main() {
 
 		logger.Fatal(fmt.Sprintf("base64 decoding error: %v", err))
 
+		logger.Info("plugin engine stopped")
+
+		error := map[string]interface{}{
+			constants.Error: map[string]interface{}{
+				constants.Error:        err.Error(),
+				constants.ErrorMessage: "not valid encode request",
+				constants.ErrorCode:    21,
+			},
+		}
+		jsonInput = append(jsonInput, error)
+
+		send(jsonInput)
+
 		return
 
 	}
-
-	var jsonInput []map[string]interface{}
 
 	err = json.Unmarshal(decodedBytes, &jsonInput)
 
@@ -36,19 +71,33 @@ func main() {
 
 		logger.Fatal(fmt.Sprintf("unable to convert string to json map: %v", err))
 
+		logger.Info("plugin engine stopped")
+
+		error := map[string]interface{}{
+			constants.Error: map[string]interface{}{
+				constants.Error:        err.Error(),
+				constants.ErrorMessage: "unable to convert string to json map",
+				constants.ErrorCode:    22,
+			},
+		}
+		jsonInput = append(jsonInput, error)
+
+		send(jsonInput)
+
 		return
 
 	}
 
-	outputChannel := make(chan bool, len(jsonInput))
+	var wg sync.WaitGroup
 
-	defer close(outputChannel)
+	wg.Add(len(jsonInput))
 
 	for _, objectIP := range jsonInput {
 
 		userContext := objectIP
 
-		go func() {
+		go func(wg *sync.WaitGroup) {
+
 			errContexts := make([]map[string]interface{}, 0)
 
 			switch userContext[constants.DeviceType].(string) {
@@ -75,28 +124,25 @@ func main() {
 				userContext[constants.Status] = constants.StatusSuccess
 			}
 
-			outputChannel <- true
-		}()
+			wg.Done()
+		}(&wg)
 	}
 
-	for i := 0; i < len(jsonInput); i++ {
-		select {
-		case _ = <-outputChannel:
-		}
-	}
+	wg.Wait()
+
 	logger.Info(fmt.Sprintf("%v", jsonInput))
 
-	jsonOutput, err := json.Marshal(jsonInput)
+	send(jsonInput)
 
-	if err != nil {
+	logger.Info("plugin engine Ended")
+}
 
-		logger.Fatal(fmt.Sprintf("json marshal error: %v", err))
+func send(result []map[string]interface{}) {
 
-	}
+	jsonOutput, _ := json.Marshal(result)
+
 	encodedString := base64.StdEncoding.EncodeToString(jsonOutput)
 
 	fmt.Println(encodedString)
-
-	logger.Info("Boostrap Ended")
 
 }
