@@ -3,8 +3,7 @@ package linux
 import (
 	"fmt"
 	"motadata-lite/client/SSHclient"
-	"motadata-lite/utils/constants"
-	PluginLogger "motadata-lite/utils/logger"
+	"motadata-lite/utils"
 	"strconv"
 	"strings"
 )
@@ -53,6 +52,8 @@ const (
 	SYSTEM_SWAP_MEMORY_USED_PERCENT = "system.swap.memory.used.percent"
 
 	SYSTEM_SWAP_MEMORY_FREE_PERCENT = "system.swap.memory.free.percent"
+
+	SYSTEM_SWAP_MEMORY_FREE_BYTES = "system.swap.memory.free.bytes"
 
 	SYSTEM_BUFFER_MEMORY_BYTES = "system.buffer.memory.bytes"
 
@@ -103,7 +104,7 @@ const (
 	SYSTEM_CONTEXT_SWITCHES_PER_SEC = "system.context.switches.per.sec"
 )
 
-var logger = PluginLogger.NewLogger("goEngine/plugin", "plugin")
+var logger = utils.NewLogger("goEngine/plugin", "plugin")
 
 func Discovery(jsonInput map[string]interface{}, errContext *[]map[string]interface{}) {
 
@@ -113,9 +114,9 @@ func Discovery(jsonInput map[string]interface{}, errContext *[]map[string]interf
 			logger.Error(fmt.Sprintf("%v", err))
 
 			*errContext = append(*errContext, map[string]interface{}{
-				constants.ErrorCode:    21,
-				constants.ErrorMessage: "formating problem",
-				constants.Error:        err,
+				utils.ErrorCode:    21,
+				utils.ErrorMessage: "formating problem",
+				utils.Error:        err,
 			})
 		}
 	}()
@@ -131,7 +132,7 @@ func Discovery(jsonInput map[string]interface{}, errContext *[]map[string]interf
 		isValid, _ := client.Init()
 
 		if isValid {
-			jsonInput[constants.Result] = map[string]interface{}{constants.ObjectIP: jsonInput[constants.ObjectIP].(string)}
+			jsonInput[utils.Result] = map[string]interface{}{utils.ObjectIP: jsonInput[utils.ObjectIP].(string)}
 
 			jsonInput["credential.profile.id"] = credential.(map[string]interface{})["credential.id"].(float64)
 
@@ -152,9 +153,9 @@ func Collect(jsonInput map[string]interface{}, errContext *[]map[string]interfac
 			logger.Error(fmt.Sprintf("%v", err))
 
 			*errContext = append(*errContext, map[string]interface{}{
-				constants.ErrorCode:    21,
-				constants.ErrorMessage: "formating problem",
-				constants.Error:        err,
+				utils.ErrorCode:    21,
+				utils.ErrorMessage: "formating problem",
+				utils.Error:        err,
 			})
 		}
 	}()
@@ -171,14 +172,14 @@ func Collect(jsonInput map[string]interface{}, errContext *[]map[string]interfac
 
 	if !isValid {
 		*errContext = append(*errContext, map[string]interface{}{
-			constants.ErrorCode:    12,
-			constants.ErrorMessage: "Cannot establish connection to host",
-			constants.Error:        err.Error(),
+			utils.ErrorCode:    12,
+			utils.ErrorMessage: "Cannot establish connection to host",
+			utils.Error:        err.Error(),
 		})
 		return
 	}
 
-	var command = "cat /sys/class/dmi/id/sys_vendor; uname -sr | awk {'print $1,$2'};uptime -s; date -d \"$(uptime -s)\" +%s; cat /sys/class/dmi/id/product_name;hostname;ps aux | awk {'print $8'} | grep -wc 'X';ps -eLf | wc -l;ps -e --no-headers | wc -l ;netstat -un | wc -l | awk '{print $1 - 2}';netstat -tn | wc -l | awk '{print $1 - 2}';cat /proc/net/snmp | grep -i 'TCP' | tail -n 1 | awk {'print $13'};ifconfig | awk '/errors/ {sum += $3} END {print sum}';ifconfig | awk '/TX packets/ {sum += $3} END {print sum}';top -bn1 | head -n 4 | tail -n 1 | awk {'print $4,$6,$10'};top -bn1 | head -n 5 | tail -n 1 | awk {'print $3,$5,$7'};free | head -n 2 | tail -n 1 | awk {'print $6'};free -b | head -n 2 | tail -n 1 | awk {'print $3,$4'};free | awk '/Mem:/ {printf(\"%.2f\\n\", ($3/$2) * 100)}';free | awk '/Mem:/ {printf(\"%.2f\\n\", ($4/($3+$4)) * 100)}';lsof | wc -l | awk '{print $1 - 2}';df --total | tail -n 1 | awk '{print $2,$4, ($4/$2)*100 \"%\"}';df --output=pcent | head -3 | tail -1 | awk {'print $NF'}\n; df --output=used / | awk 'NR==2 {print $1}';iostat |head -n 4 | tail -n -1 | awk '{print $4}';top -bn1 | head -n 1 | awk {'print $10,$11,$NF'};mpstat -I ALL | head -n 4 | tail -n 1 | awk {'print $NF'};top -bn1 | head -n 3 | tail -n 1 | awk {'print $2,$4'};mpstat | tail -n -1 | awk {'print $8'};mpstat |tail -n 1 |  awk {'print $7,$NF'};lscpu | head -n 1 | awk {'print $NF'};lscpu | head -n 5 | tail -n 1 | awk {'print $NF'};vmstat | tail -n 1 | awk {'print $12'}"
+	var command = "cat /sys/class/dmi/id/sys_vendor; uname -sr | awk {'print $1,$2'};uptime -s; date -d \"$(uptime -s)\" +%s; cat /sys/class/dmi/id/product_name;hostname;ps aux | awk {'print $8'} | grep -wc 'X';ps -eLf | wc -l;ps -e --no-headers | wc -l ;netstat -un | wc -l | awk '{print $1 - 2}';netstat -tn | wc -l | awk '{print $1 - 2}';cat /proc/net/snmp | grep -i 'TCP' | tail -n 1 | awk {'print $13'};ifconfig | awk '/errors/ {sum += $3} END {print sum}';ifconfig | awk '/TX packets/ {sum += $3} END {print sum}';top -bn1 | head -n 4 | tail -n 1 | awk {'print $4,$6,$10'};top -bn1 | head -n 5 | tail -n 1 | awk {'print $3,$5,$7'};free | head -n 2 | tail -n 1 | awk {'print $6'};free -b | head -n 2 | tail -n 1 | awk {'print $3,$4'};free | awk '/Mem:/ {printf(\"%.2f\\n\", ($3/$2) * 100)}';free | awk '/Mem:/ {printf(\"%.2f\\n\", ($4/($3+$4)) * 100)}';lsof | wc -l | awk '{print $1 - 2}';df --total | tail -n 1 | awk '{print $2,$4, ($4/$2)*100 \"%\"}';df --output=pcent | head -3 | tail -1 | awk {'print $NF'}; df --output=used / | awk 'NR==2 {print $1}';iostat |head -n 4 | tail -n -1 | awk '{print $4}';top -bn1 | head -n 1 | awk {'print $10,$11,$NF'};mpstat -I ALL | head -n 4 | tail -n 1 | awk {'print $NF'};top -bn1 | head -n 3 | tail -n 1 | awk {'print $2,$4'};mpstat | tail -n -1 | awk {'print $8'};mpstat |tail -n 1 |  awk {'print $7,$NF'};lscpu | head -n 1 | awk {'print $NF'};lscpu | head -n 5 | tail -n 1 | awk {'print $NF'};vmstat | tail -n 1 | awk {'print $12'}"
 
 	queryOutput, err := client.ExecuteCommand(command)
 
@@ -186,11 +187,11 @@ func Collect(jsonInput map[string]interface{}, errContext *[]map[string]interfac
 
 		*errContext = append(*errContext, map[string]interface{}{
 
-			constants.ErrorCode: 11,
+			utils.ErrorCode: 11,
 
-			constants.ErrorMessage: "error in the command",
+			utils.ErrorMessage: "error in the command",
 
-			constants.Error: err.Error(),
+			utils.Error: err.Error(),
 		})
 
 		logger.Error(fmt.Sprintf("error in the command: %s", err.Error()))
@@ -213,9 +214,9 @@ func Collect(jsonInput map[string]interface{}, errContext *[]map[string]interfac
 			//fmt.Println("error in reading output lines", r)
 
 			*errContext = append(*errContext, map[string]interface{}{
-				constants.ErrorCode:    16,
-				constants.ErrorMessage: "error in the reading output lines",
-				constants.Error:        "out of index",
+				utils.ErrorCode:    16,
+				utils.ErrorMessage: "error in the reading output lines",
+				utils.Error:        "out of index",
 			})
 
 			logger.Error(fmt.Sprintf("error in the reading output lines: %s", err.Error()))
@@ -271,7 +272,7 @@ func Collect(jsonInput map[string]interface{}, errContext *[]map[string]interfac
 
 	swapFreeValue, _ := strconv.ParseFloat(swapMemoryValue[1], 64)
 
-	output[SYSTEM_MEMORY_FREE_BYTES] = swapFreeValue
+	output[SYSTEM_SWAP_MEMORY_FREE_BYTES] = swapFreeValue
 
 	swapUsedValue, _ := strconv.ParseFloat(swapMemoryValue[2], 64)
 
@@ -343,6 +344,6 @@ func Collect(jsonInput map[string]interface{}, errContext *[]map[string]interfac
 
 	output[SYSTEM_CONTEXT_SWITCHES_PER_SEC], _ = strconv.ParseFloat(lines[32], 64)
 
-	jsonInput[constants.Result] = output
+	jsonInput[utils.Result] = output
 
 }

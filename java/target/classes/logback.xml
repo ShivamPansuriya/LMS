@@ -3,7 +3,7 @@
     <!-- Console Appender -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -11,49 +11,49 @@
     <appender name="FILE_SERVER" class="ch.qos.logback.core.FileAppender">
         <file>Server.log</file>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="Credential_File" class="ch.qos.logback.core.FileAppender">
         <file>credential.log</file>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="Discovery_File" class="ch.qos.logback.core.FileAppender">
         <file>discovery.log</file>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="Plugin_File" class="ch.qos.logback.core.FileAppender">
         <file>plugin.log</file>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="Route_File" class="ch.qos.logback.core.FileAppender">
         <file>api.log</file>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="Provision_File" class="ch.qos.logback.core.FileAppender">
         <file>provision.log</file>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="Database_File" class="ch.qos.logback.core.FileAppender">
         <file>database.log</file>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%file:%line] %msg%n</pattern>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -67,27 +67,27 @@
         <appender-ref ref="FILE_SERVER" />
     </logger>
 
-    <logger name="com.motadata.credentialprofile.CredentialProfile" level="trace" additivity="false">
+    <logger name="com.motadata.profile.Credential" level="trace" additivity="false">
         <appender-ref ref="Credential_File" />
     </logger>
 
-    <logger name="com.motadata.discovery.Discovery" level="trace" additivity="false">
+    <logger name="com.motadata.profile.Discovery" level="trace" additivity="false">
         <appender-ref ref="Discovery_File" />
     </logger>
 
-    <logger name="com.motadata.pluginengine.PluginEngine" level="trace" additivity="false">
+    <logger name="com.motadata.engine.PluginEngine" level="trace" additivity="false">
         <appender-ref ref="Plugin_File" />
     </logger>
 
-    <logger name="com.motadata.route.APIEngine" level="trace" additivity="false">
+    <logger name="com.motadata.engine.APIEngine" level="trace" additivity="false">
         <appender-ref ref="Route_File" />
     </logger>
 
-    <logger name="com.motadata.provision.Provision" level="trace" additivity="false">
+    <logger name="com.motadata.profile.Provision" level="trace" additivity="false">
         <appender-ref ref="Provision_File" />
     </logger>
 
-    <logger name="com.motadata.database.DBHandler" level="trace" additivity="false">
+    <logger name="com.motadata.engine.ConfigEngine" level="trace" additivity="false">
         <appender-ref ref="Database_File" />
     </logger>
 </configuration>

@@ -3,8 +3,7 @@ package SSHclient
 import (
 	"fmt"
 	"golang.org/x/crypto/ssh"
-	"motadata-lite/utils/constants"
-	"motadata-lite/utils/logger"
+	"motadata-lite/utils"
 	"time"
 )
 
@@ -21,19 +20,19 @@ type Client struct {
 
 	session *ssh.Session
 
-	logger logger.Logger
+	logger utils.Logger
 }
 
 func (client *Client) SetContext(context map[string]interface{}, credential map[string]interface{}) {
-	client.logger = logger.NewLogger("goEngine/client", "SSH Client")
+	client.logger = utils.NewLogger("goEngine/client", "SSH Client")
 
-	client.ip = context[constants.ObjectIP].(string)
+	client.ip = context[utils.ObjectIP].(string)
 
-	client.hostname = credential[constants.ObjectHost].(string)
+	client.hostname = credential[utils.ObjectHost].(string)
 
-	client.port = context[constants.ObjectPort].(float64)
+	client.port = context[utils.ObjectPort].(float64)
 
-	client.password = credential[constants.ObjectPassword].(string)
+	client.password = credential[utils.ObjectPassword].(string)
 
 }
 

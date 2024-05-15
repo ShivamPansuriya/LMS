@@ -5,8 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"motadata-lite/plugins/linux"
-	"motadata-lite/utils/constants"
-	"motadata-lite/utils/logger"
+	"motadata-lite/utils"
 	"os"
 	"sync"
 )
@@ -14,7 +13,7 @@ import (
 func main() {
 	// Set the output of the logger to the file
 
-	logger := logger.NewLogger("goEngine/logs", "main")
+	logger := utils.NewLogger("goEngine/logs", "main")
 
 	logger.Info("plugin engine started")
 
@@ -27,10 +26,10 @@ func main() {
 		logger.Info("plugin engine stopped")
 
 		error := map[string]interface{}{
-			constants.Error: map[string]interface{}{
-				constants.Error:        "os.args error",
-				constants.ErrorMessage: "not valid arguments",
-				constants.ErrorCode:    20,
+			utils.Error: map[string]interface{}{
+				utils.Error:        "os.args error",
+				utils.ErrorMessage: "not valid arguments",
+				utils.ErrorCode:    20,
 			},
 		}
 		jsonInput = append(jsonInput, error)
@@ -51,10 +50,10 @@ func main() {
 		logger.Info("plugin engine stopped")
 
 		error := map[string]interface{}{
-			constants.Error: map[string]interface{}{
-				constants.Error:        err.Error(),
-				constants.ErrorMessage: "not valid encode request",
-				constants.ErrorCode:    21,
+			utils.Error: map[string]interface{}{
+				utils.Error:        err.Error(),
+				utils.ErrorMessage: "not valid encode request",
+				utils.ErrorCode:    21,
 			},
 		}
 		jsonInput = append(jsonInput, error)
@@ -74,10 +73,10 @@ func main() {
 		logger.Info("plugin engine stopped")
 
 		error := map[string]interface{}{
-			constants.Error: map[string]interface{}{
-				constants.Error:        err.Error(),
-				constants.ErrorMessage: "unable to convert string to json map",
-				constants.ErrorCode:    22,
+			utils.Error: map[string]interface{}{
+				utils.Error:        err.Error(),
+				utils.ErrorMessage: "unable to convert string to json map",
+				utils.ErrorCode:    22,
 			},
 		}
 		jsonInput = append(jsonInput, error)
@@ -100,28 +99,28 @@ func main() {
 
 			errContexts := make([]map[string]interface{}, 0)
 
-			switch userContext[constants.DeviceType].(string) {
+			switch userContext[utils.DeviceType].(string) {
 
-			case constants.LinuxDevice:
+			case utils.LinuxDevice:
 
-				switch userContext[constants.RequestType].(string) {
+				switch userContext[utils.RequestType].(string) {
 
-				case constants.Collect:
+				case utils.Collect:
 
 					linux.Collect(userContext, &errContexts)
 
-				case constants.Discovery:
+				case utils.Discovery:
 
 					linux.Discovery(userContext, &errContexts)
 				}
 			}
 
 			if len(errContexts) > 0 {
-				userContext[constants.Status] = constants.StatusFail
+				userContext[utils.Status] = utils.StatusFail
 
-				userContext[constants.Error] = errContexts
+				userContext[utils.Error] = errContexts
 			} else {
-				userContext[constants.Status] = constants.StatusSuccess
+				userContext[utils.Status] = utils.StatusSuccess
 			}
 
 			wg.Done()

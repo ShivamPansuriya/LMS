@@ -1,14 +1,14 @@
 package com.motadata;
 
-import com.motadata.database.DBHandler;
+import com.motadata.engine.ConfigEngine;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.ThreadingModel;
 import io.vertx.core.Vertx;
-import com.motadata.credentialprofile.CredentialProfile;
-import com.motadata.discovery.Discovery;
-import com.motadata.pluginengine.PluginEngine;
-import com.motadata.provision.Provision;
-import com.motadata.route.APIEngine;
+import com.motadata.profile.Credential;
+import com.motadata.profile.Discovery;
+import com.motadata.engine.PluginEngine;
+import com.motadata.profile.Provision;
+import com.motadata.engine.APIEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +35,7 @@ public class Boostrap
             }
         });
 
-        vertx.deployVerticle(CredentialProfile.class.getName(),new DeploymentOptions().setInstances(1)).onComplete(result->
+        vertx.deployVerticle(Credential.class.getName(),new DeploymentOptions().setInstances(1)).onComplete(result->
         {
             if(result.succeeded())
             {
@@ -71,7 +71,7 @@ public class Boostrap
             }
         });
 
-        vertx.deployVerticle(DBHandler.class.getName(),new DeploymentOptions().setInstances(1).setThreadingModel(ThreadingModel.WORKER)).onComplete(result->
+        vertx.deployVerticle(ConfigEngine.class.getName(),new DeploymentOptions().setInstances(1).setThreadingModel(ThreadingModel.WORKER)).onComplete(result->
         {
             if(result.succeeded())
             {

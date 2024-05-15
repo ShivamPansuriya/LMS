@@ -174,3 +174,219 @@
 [2024-05-14 18:54:55.930] [INFO ] [Boostrap.java:78] DB Engine started
 [2024-05-14 18:54:55.931] [INFO ] [Boostrap.java:90] Plugin Engine started
 [2024-05-14 18:54:56.089] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-14 23:57:38.520] [INFO ] [Boostrap.java:22] Application started
+[2024-05-14 23:57:38.787] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-14 23:57:38.812] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-14 23:57:38.813] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-14 23:57:38.813] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-14 23:57:38.814] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-14 23:57:38.814] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-14 23:57:38.949] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-15 10:52:55.609] [INFO ] [Boostrap.java:22] Application started
+[2024-05-15 10:52:55.844] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 10:52:55.854] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 10:52:55.855] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 10:52:55.855] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 10:52:55.855] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 10:52:55.856] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-15 10:52:55.987] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-15 12:58:55.121] [INFO ] [Boostrap.java:22] Application started
+[2024-05-15 12:58:55.421] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 12:58:55.432] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 12:58:55.432] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 12:58:55.433] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-15 12:58:55.433] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 12:58:55.433] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 12:58:55.579] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-15 13:02:36.853] [INFO ] [Boostrap.java:22] Application started
+[2024-05-15 13:02:37.184] [INFO ] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 13:02:37.199] [INFO ] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 13:02:37.200] [INFO ] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 13:02:37.200] [INFO ] [Boostrap.java:78] DB Engine started
+[2024-05-15 13:02:37.200] [INFO ] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 13:02:37.200] [INFO ] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 13:02:37.372] [INFO ] [Boostrap.java:30] API Engine started
+[2024-05-15 13:09:04.640] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 13:09:04.941] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 13:09:04.959] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 13:09:04.960] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 13:09:04.960] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 13:09:04.960] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 13:09:04.962] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 13:09:05.103] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 13:15:19.140] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 13:15:19.443] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 13:15:19.455] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 13:15:19.456] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 13:15:19.456] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 13:15:19.456] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 13:15:19.457] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 13:15:19.633] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 13:19:10.104] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 13:19:10.403] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 13:19:10.415] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 13:19:10.416] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 13:19:10.423] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 13:19:10.423] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 13:19:10.423] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 13:19:10.564] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 14:08:28.076] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 14:08:28.357] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 14:08:28.373] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 14:08:28.374] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 14:08:28.374] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 14:08:28.374] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 14:08:28.375] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 14:08:28.524] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 14:33:50.053] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 14:33:50.334] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 14:33:50.346] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 14:33:50.347] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 14:33:50.347] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 14:33:50.348] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 14:33:50.349] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 14:33:50.493] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 14:41:48.124] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 14:41:48.428] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 14:41:48.440] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 14:41:48.441] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 14:41:48.442] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 14:41:48.442] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 14:41:48.443] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 14:41:48.584] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 14:44:36.521] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 14:44:36.796] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 14:44:36.807] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 14:44:36.807] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 14:44:36.808] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 14:44:36.808] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 14:44:36.808] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 14:44:36.955] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 14:45:39.163] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 14:45:39.472] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 14:45:39.490] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 14:45:39.492] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 14:45:39.492] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 14:45:39.492] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 14:45:39.492] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 14:45:39.639] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 14:49:15.351] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 14:49:15.649] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 14:49:15.665] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 14:49:15.665] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 14:49:15.666] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 14:49:15.666] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 14:49:15.667] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 14:49:15.830] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 15:01:11.298] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 15:01:11.571] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 15:01:11.583] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 15:01:11.584] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 15:01:11.584] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 15:01:11.584] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 15:01:11.585] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 15:01:11.731] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 15:02:31.372] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 15:02:31.657] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 15:02:31.667] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 15:02:31.668] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 15:02:31.669] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 15:02:31.669] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 15:02:31.669] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 15:02:31.824] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 15:04:23.857] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 15:04:24.147] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 15:04:24.158] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 15:04:24.158] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 15:04:24.159] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 15:04:24.159] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 15:04:24.159] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 15:04:24.335] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 15:05:27.318] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 15:05:27.617] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 15:05:27.630] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 15:05:27.630] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 15:05:27.631] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 15:05:27.631] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 15:05:27.631] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 15:05:27.769] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 15:06:04.658] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 15:06:04.989] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 15:06:05.003] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 15:06:05.003] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 15:06:05.004] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 15:06:05.004] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 15:06:05.004] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 15:06:05.159] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 15:14:08.099] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 15:14:08.378] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 15:14:08.391] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 15:14:08.391] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 15:14:08.392] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 15:14:08.392] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 15:14:08.393] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 15:14:08.526] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 15:22:10.854] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 15:22:11.138] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 15:22:11.165] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 15:22:11.166] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 15:22:11.166] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 15:22:11.166] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 15:22:11.167] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 15:22:11.307] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 15:22:44.416] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 15:22:44.712] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 15:22:44.733] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 15:22:44.734] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 15:22:44.735] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 15:22:44.735] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 15:22:44.735] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 15:22:44.876] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 15:49:35.546] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 15:49:35.845] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 15:49:35.857] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 15:49:35.858] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 15:49:35.858] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 15:49:35.858] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 15:49:35.859] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 15:49:36.012] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 15:54:49.580] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 15:54:49.900] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 15:54:49.914] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 15:54:49.914] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 15:54:49.915] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 15:54:49.915] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 15:54:49.915] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 15:54:50.072] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 16:09:03.192] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 16:09:03.488] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 16:09:03.505] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 16:09:03.506] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 16:09:03.506] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 16:09:03.506] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 16:09:03.506] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 16:09:03.643] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 16:16:40.692] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 16:16:40.972] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 16:16:40.984] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 16:16:40.984] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 16:16:40.985] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 16:16:40.985] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 16:16:40.987] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 16:16:41.124] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 16:18:48.624] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 16:18:48.921] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 16:18:48.936] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 16:18:48.936] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 16:18:48.937] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 16:18:48.937] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 16:18:48.937] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 16:18:49.070] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started
+[2024-05-15 17:42:51.093] [INFO ] [main] [Boostrap.java:22] Application started
+[2024-05-15 17:42:51.375] [INFO ] [main] [Boostrap.java:98] Application verticals deployed
+[2024-05-15 17:42:51.387] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:42] Credential Profile vertical deployed
+[2024-05-15 17:42:51.389] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:54] Discovery vertical deployed
+[2024-05-15 17:42:51.389] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:78] DB Engine started
+[2024-05-15 17:42:51.389] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:66] Provision vertical deployed
+[2024-05-15 17:42:51.390] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:90] Plugin Engine started
+[2024-05-15 17:42:51.539] [INFO ] [vert.x-eventloop-thread-0] [Boostrap.java:30] API Engine started

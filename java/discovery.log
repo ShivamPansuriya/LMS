@@ -30,3 +30,9 @@
 [2024-05-14 18:53:45.916] [WARN ] [Discovery.java:43] unable to save discovery profiles to DB
 [2024-05-14 18:55:00.286] [WARN ] [Discovery.java:43] unable to save discovery profiles to DB
 [2024-05-14 18:55:02.117] [WARN ] [Discovery.java:43] unable to save discovery profiles to DB
+[2024-05-14 23:58:30.701] [ERROR] [Discovery.java:170] {"status":"fail","error":{"error":"Device not in network","error.code":404,"message":"Unable to find device in network"}}
+[2024-05-15 10:54:21.625] [ERROR] [Discovery.java:170] {"status":"fail","error":{"error":"Device not in network","error.code":404,"message":"Unable to find device in network"}}
+[2024-05-15 10:54:34.078] [ERROR] [Discovery.java:170] {"status":"fail","error":{"error":"Device not in network","error.code":404,"message":"Unable to find device in network"}}
+[2024-05-15 15:55:54.243] [WARN ] [vert.x-eventloop-thread-3] [Discovery.java:43] unable to save discovery profiles to DB
+[2024-05-15 15:57:44.380] [WARN ] [vert.x-eventloop-thread-3] [Discovery.java:128] all given credentials are invalid. request: {"discovery.data":[{"discovery":{"object.ip":"10.20.40.229","object.port":"22","credentials":[0,1,2,3]},"credentials":[{"object.host":"shivam","object.password":"9898","credential.id":0},{"object.host":"yash","object.password":"1010","credential.id":1},{"object.host":"raj","object.password":"Mind@123","credential.id":2},{"object.host":"vaibhav","object.password":"Hardik@1311","credential.id":3}]}],"status":"success"}
+[2024-05-15 16:35:46.250] [WARN ] [vert.x-eventloop-thread-3] [Discovery.java:128] all given credentials are invalid. request: {"discovery.data":[{"discovery":{"object.ip":"10.20.40.128","object.port":22,"credentials":["0"]},"credentials":[{"object.host":"shivam","object.password":"9898","credential.id":"0"}]}],"status":"success"}
