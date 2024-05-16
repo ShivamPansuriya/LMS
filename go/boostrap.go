@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"motadata-lite/plugins/linux"
 	"motadata-lite/utils"
+	"motadata-lite/utils/constants"
 	"os"
 	"sync"
 )
@@ -13,11 +14,11 @@ import (
 func main() {
 	// Set the output of the logger to the file
 
-	logger := utils.NewLogger("goEngine/logs", "main")
+	logger := utils.NewLogger("goEngine/main", "Boostrap")
 
 	logger.Info("plugin engine started")
 
-	var jsonInput []map[string]interface{}
+	var requestContext []map[string]interface{}
 
 	if len(os.Args) != 2 {
 
@@ -25,16 +26,19 @@ func main() {
 
 		logger.Info("plugin engine stopped")
 
-		error := map[string]interface{}{
-			utils.Error: map[string]interface{}{
-				utils.Error:        "os.args error",
-				utils.ErrorMessage: "not valid arguments",
-				utils.ErrorCode:    20,
+		message := map[string]interface{}{
+			constants.Error: map[string]interface{}{
+				constants.Error:        "os.args error",
+				constants.ErrorMessage: "not valid arguments",
+				constants.ErrorCode:    20,
 			},
 		}
-		jsonInput = append(jsonInput, error)
 
-		send(jsonInput)
+		message[constants.Status] = constants.StatusFail
+
+		requestContext = append(requestContext, message)
+
+		send(requestContext)
 
 		return
 	}
@@ -49,22 +53,25 @@ func main() {
 
 		logger.Info("plugin engine stopped")
 
-		error := map[string]interface{}{
-			utils.Error: map[string]interface{}{
-				utils.Error:        err.Error(),
-				utils.ErrorMessage: "not valid encode request",
-				utils.ErrorCode:    21,
+		message := map[string]interface{}{
+			constants.Error: map[string]interface{}{
+				constants.Error:        err.Error(),
+				constants.ErrorMessage: "not valid encode request",
+				constants.ErrorCode:    21,
 			},
 		}
-		jsonInput = append(jsonInput, error)
 
-		send(jsonInput)
+		message[constants.Status] = constants.StatusFail
+
+		requestContext = append(requestContext, message)
+
+		send(requestContext)
 
 		return
 
 	}
 
-	err = json.Unmarshal(decodedBytes, &jsonInput)
+	err = json.Unmarshal(decodedBytes, &requestContext)
 
 	if err != nil {
 
@@ -72,16 +79,19 @@ func main() {
 
 		logger.Info("plugin engine stopped")
 
-		error := map[string]interface{}{
-			utils.Error: map[string]interface{}{
-				utils.Error:        err.Error(),
-				utils.ErrorMessage: "unable to convert string to json map",
-				utils.ErrorCode:    22,
+		message := map[string]interface{}{
+			constants.Error: map[string]interface{}{
+				constants.Error:        err.Error(),
+				constants.ErrorMessage: "unable to convert string to json map",
+				constants.ErrorCode:    22,
 			},
 		}
-		jsonInput = append(jsonInput, error)
 
-		send(jsonInput)
+		message[constants.Status] = constants.StatusFail
+
+		requestContext = append(requestContext, message)
+
+		send(requestContext)
 
 		return
 
@@ -89,58 +99,56 @@ func main() {
 
 	var wg sync.WaitGroup
 
-	wg.Add(len(jsonInput))
+	wg.Add(len(requestContext))
 
-	for _, objectIP := range jsonInput {
+	for _, context := range requestContext {
 
-		userContext := objectIP
-
-		go func(wg *sync.WaitGroup) {
+		go func(wg *sync.WaitGroup, context map[string]interface{}) {
 
 			errContexts := make([]map[string]interface{}, 0)
 
-			switch userContext[utils.DeviceType].(string) {
+			switch context[constants.DeviceType].(string) {
 
-			case utils.LinuxDevice:
+			case constants.LinuxDevice:
 
-				switch userContext[utils.RequestType].(string) {
+				switch context[constants.RequestType].(string) {
 
-				case utils.Collect:
+				case constants.Collect:
 
-					linux.Collect(userContext, &errContexts)
+					linux.Collect(context, &errContexts)
 
-				case utils.Discovery:
+				case constants.Discovery:
 
-					linux.Discovery(userContext, &errContexts)
+					linux.Discovery(context, &errContexts)
 				}
 			}
 
 			if len(errContexts) > 0 {
-				userContext[utils.Status] = utils.StatusFail
+				context[constants.Status] = constants.StatusFail
 
-				userContext[utils.Error] = errContexts
+				context[constants.Error] = errContexts
 			} else {
-				userContext[utils.Status] = utils.StatusSuccess
+				context[constants.Status] = constants.StatusSuccess
 			}
 
 			wg.Done()
-		}(&wg)
+		}(&wg, context)
 	}
 
 	wg.Wait()
 
-	logger.Info(fmt.Sprintf("%v", jsonInput))
+	logger.Info(fmt.Sprintf("%v", requestContext))
 
-	send(jsonInput)
+	send(requestContext)
 
 	logger.Info("plugin engine Ended")
 }
 
 func send(result []map[string]interface{}) {
 
-	jsonOutput, _ := json.Marshal(result)
+	responseContext, _ := json.Marshal(result)
 
-	encodedString := base64.StdEncoding.EncodeToString(jsonOutput)
+	encodedString := base64.StdEncoding.EncodeToString(responseContext)
 
 	fmt.Println(encodedString)
 

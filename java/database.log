@@ -1073,3 +1073,34 @@
 [2024-05-15 17:45:39.157] [DEBUG] [vert.x-worker-thread-12] [ConfigEngine.java:177] rows inserted ip: 10.20.40.128
 [2024-05-15 17:45:46.998] [DEBUG] [vert.x-worker-thread-14] [ConfigEngine.java:103] provision started for discovery id 1
 [2024-05-15 17:45:53.933] [ERROR] [vert.x-worker-thread-17] [ConfigEngine.java:517] {"message":"Un-provision successfully","error":{"error":"already un-provisioned","error.code":400,"error.message":"Request device: 1 has not been provisioned yet"},"status":"fail"}
+[2024-05-16 10:05:21.681] [DEBUG] [vert.x-worker-thread-6] [ConfigEngine.java:62] new credential profile added {"id":0}
+[2024-05-16 10:06:02.409] [ERROR] [vert.x-worker-thread-12] [ConfigEngine.java:233] For input string: "a"
+[2024-05-16 10:07:01.704] [ERROR] [vert.x-worker-thread-5] [ConfigEngine.java:233] For input string: "a"
+[2024-05-16 10:07:47.562] [ERROR] [vert.x-worker-thread-5] [ConfigEngine.java:233] For input string: "a"
+[2024-05-16 10:11:07.145] [ERROR] [vert.x-worker-thread-5] [ConfigEngine.java:538] For input string: "a"
+[2024-05-16 10:11:15.013] [ERROR] [vert.x-worker-thread-6] [ConfigEngine.java:527] {"error":{"error":"already un-provisioned","error.code":400,"error.message":"Request device: 3 has not been provisioned yet"},"status":"fail"}
+[2024-05-16 11:57:52.264] [DEBUG] [vert.x-worker-thread-5] [ConfigEngine.java:62] new credential profile added {"id":0}
+[2024-05-16 11:57:59.929] [DEBUG] [vert.x-worker-thread-7] [ConfigEngine.java:92] new discovery profile added {"id":1}
+[2024-05-16 11:58:14.362] [DEBUG] [vert.x-worker-thread-9] [ConfigEngine.java:306] discovery run performed for id 1
+[2024-05-16 12:00:33.907] [DEBUG] [vert.x-worker-thread-5] [ConfigEngine.java:62] new credential profile added {"id":0}
+[2024-05-16 12:00:38.597] [DEBUG] [vert.x-worker-thread-7] [ConfigEngine.java:92] new discovery profile added {"id":1}
+[2024-05-16 12:00:43.480] [DEBUG] [vert.x-worker-thread-8] [ConfigEngine.java:306] discovery run performed for id 1
+[2024-05-16 12:00:43.800] [DEBUG] [vert.x-worker-thread-10] [ConfigEngine.java:205] value added to valid discovery 1:0
+[2024-05-16 12:00:53.122] [DEBUG] [vert.x-worker-thread-12] [ConfigEngine.java:108] provision started for discovery id 1
+[2024-05-16 12:01:53.885] [DEBUG] [vert.x-worker-thread-2] [ConfigEngine.java:183] rows inserted ip: 10.20.40.128
+[2024-05-16 12:02:52.208] [INFO ] [vert.x-worker-thread-10] [ConfigEngine.java:534] {"message":"Un-provision successfully","status":"success"}
+[2024-05-16 12:02:53.377] [DEBUG] [vert.x-worker-thread-11] [ConfigEngine.java:183] rows inserted ip: 10.20.40.128
+[2024-05-16 12:02:57.600] [ERROR] [vert.x-worker-thread-13] [ConfigEngine.java:542] {"error":{"error":"already un-provisioned","error.code":400,"error.message":"Request device: 1 has not been provisioned yet"},"status":"fail"}
+[2024-05-16 12:03:05.716] [ERROR] [vert.x-worker-thread-14] [ConfigEngine.java:542] {"error":{"error":"already un-provisioned","error.code":400,"error.message":"Request device: 2 has not been provisioned yet"},"status":"fail"}
+[2024-05-16 12:46:47.493] [DEBUG] [vert.x-worker-thread-6] [ConfigEngine.java:78] credential not matched with existing data
+[2024-05-16 12:46:51.935] [DEBUG] [vert.x-worker-thread-7] [ConfigEngine.java:62] new credential profile added {"id":0}
+[2024-05-16 12:46:54.120] [DEBUG] [vert.x-worker-thread-8] [ConfigEngine.java:92] new discovery profile added {"id":1}
+[2024-05-16 12:46:58.722] [DEBUG] [vert.x-worker-thread-9] [ConfigEngine.java:306] discovery run performed for id 1
+[2024-05-16 12:46:58.969] [DEBUG] [vert.x-worker-thread-11] [ConfigEngine.java:205] value added to valid discovery 1:0
+[2024-05-16 12:47:01.148] [DEBUG] [vert.x-worker-thread-12] [ConfigEngine.java:108] provision started for discovery id 1
+[2024-05-16 12:48:04.891] [DEBUG] [vert.x-worker-thread-0] [ConfigEngine.java:183] rows inserted ip: 10.20.40.128
+[2024-05-16 12:49:03.952] [DEBUG] [vert.x-worker-thread-10] [ConfigEngine.java:183] rows inserted ip: 10.20.40.128
+[2024-05-16 12:50:04.907] [DEBUG] [vert.x-worker-thread-19] [ConfigEngine.java:183] rows inserted ip: 10.20.40.128
+[2024-05-16 12:50:45.845] [ERROR] [vert.x-worker-thread-3] [ConfigEngine.java:542] {"error":{"error":"already un-provisioned","error.code":400,"error.message":"Request device: 1 has not been provisioned yet"},"status":"fail"}
+[2024-05-16 12:50:49.682] [INFO ] [vert.x-worker-thread-6] [ConfigEngine.java:534] {"message":"Un-provision successfully","status":"success"}
+[2024-05-16 12:50:51.833] [ERROR] [vert.x-worker-thread-7] [ConfigEngine.java:542] {"error":{"error":"already un-provisioned","error.code":400,"error.message":"Request device: 2 has not been provisioned yet"},"status":"fail"}

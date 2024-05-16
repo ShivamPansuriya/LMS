@@ -28,13 +28,13 @@ public class Provision extends AbstractVerticle
 
                 if(request.isEmpty() || !request.containsKey(Constants.ID))
                 {
-                    logger.error("invalid json request");
+                    logger.debug("missing fields");
 
-                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"invalid format")).toString());
+                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"MISSING FIELD")).toString());
                 }
                 else
                 {
-                    var object = new JsonObject().put(Constants.REQUEST_TYPE,Constants.SET_PROVISION).put(Constants.REQUEST_DATA,request);
+                    var object = new JsonObject().put(Constants.REQUEST_TYPE,Constants.PROVISION).put(Constants.REQUEST_DATA,request);
 
                     eventBus.request(Constants.POST, object, result ->
                     {
@@ -66,9 +66,9 @@ public class Provision extends AbstractVerticle
 
                 if(!request.containsKey(Constants.ID))
                 {
-                    logger.info("invalid request format");
+                    logger.info("missing fields");
 
-                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"invalid format")).toString());
+                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"MISSING FIELD")).toString());
                 }
                 else
                 {
@@ -105,9 +105,9 @@ public class Provision extends AbstractVerticle
 
                 if(request.isEmpty() && !request.containsKey(Constants.IP))
                 {
-                    logger.error("invalid Json request");
+                    logger.debug("missing fields");
 
-                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"invalid format")).toString());
+                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"MISSING FIELD")).toString());
                 }
                 else
                 {
@@ -154,7 +154,7 @@ public class Provision extends AbstractVerticle
 
                     for(var discoveryId : poolTime.keySet())
                     {
-                        if(poolTime.get(discoveryId) == 60)
+                        if(poolTime.get(discoveryId) == Constants.POLL_DURATION)
                         {
                             validPollID.add(discoveryId);
                         }
@@ -176,11 +176,11 @@ public class Provision extends AbstractVerticle
 
                                 if(discoveryProfile.getJsonArray(Constants.POLL_DATA).isEmpty())
                                 {
-                                    logger.error("there is data to be poll: all request device are down");
+                                    logger.error("there is no data to be poll: all request device {} are down",validPollID);
                                 }
                                 else
                                 {
-                                    var contextArray = SSHClient.createContext(discoveryProfile.getJsonArray("poll.data"), "Collect", logger);
+                                    var contextArray = SSHClient.createContext(discoveryProfile.getJsonArray(Constants.POLL_DATA), Constants.COLLECT, logger);
 
                                     if(!contextArray.isEmpty())
                                     {
@@ -188,7 +188,7 @@ public class Provision extends AbstractVerticle
                                         {
                                             if(asyncResult.succeeded() && asyncResult.result().body()!=null)
                                             {
-                                                var pollData = new JsonObject().put(Constants.REQUEST_TYPE, Constants.POLL_DATA).put(Constants.REQUEST_DATA, new JsonObject().put("data", asyncResult.result().body().toString()));
+                                                var pollData = new JsonObject().put(Constants.REQUEST_TYPE, Constants.POLL_DATA).put(Constants.REQUEST_DATA, new JsonObject().put(Constants.POLL_DATA, asyncResult.result().body().toString()));
 
                                                 eventBus.send(Constants.POST, pollData);
                                             }

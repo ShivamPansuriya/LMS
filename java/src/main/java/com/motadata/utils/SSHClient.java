@@ -26,13 +26,18 @@ public class SSHClient
 
                 context.put(Constants.REQUEST_TYPE, requestType);
 
-                context.put("device.type", "linux");
+                context.put(Constants.DEVICE_TYPE, "linux");
 
                 context.put(Constants.PORT, Integer.parseInt(discoveryProfile.getString(Constants.PORT)));
 
                 context.put(Constants.IP, discoveryProfile.getString(Constants.IP));
 
-                context.put("credentials", discoveryCredential.getJsonArray("credentials"));
+                if(requestType.equals(Constants.DISCOVERY))
+                    context.put(Constants.CREDENTIALS, discoveryCredential.getJsonArray(Constants.CREDENTIALS));
+                else
+                    context.put(Constants.CREDENTIAL, discoveryCredential.getJsonArray(Constants.CREDENTIAL));
+
+                context.put(Constants.TIMEOUT,Constants.TIME);
 
                 contextArray.add(context);
             }

@@ -24,9 +24,11 @@ public class Discovery extends AbstractVerticle
             {
                 var request = new JsonObject(message.body().toString());
 
-                if(!request.containsKey(Constants.IP) || !request.containsKey(Constants.PORT) || !request.containsKey("credentials"))
+                if(!request.containsKey(Constants.IP) || !request.containsKey(Constants.PORT) || !request.containsKey(Constants.CREDENTIALS))
                 {
-                    message.fail(400, new JsonObject().put(Constants.STATUS, Constants.STATUS_FAIL).put(Constants.MESSAGE, "please entre valid fields").toString());
+                    logger.debug("missing fields");
+
+                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"MISSING FIELD")).toString());
                 }
                 else
                 {
@@ -42,7 +44,7 @@ public class Discovery extends AbstractVerticle
                         {
                             logger.warn("unable to save discovery profiles to DB");
 
-                            message.fail(501,result.cause().getMessage());
+                            message.fail(500,result.cause().getMessage());
                         }
                     });
                 }
@@ -50,7 +52,7 @@ public class Discovery extends AbstractVerticle
             }
             catch(Exception exception)
             {
-                message.fail(400, new JsonObject().put(Constants.STATUS, Constants.STATUS_FAIL).put(Constants.MESSAGE, "please entre valid json format").toString());
+                message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid json format").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"invalid format")).toString());
 
                 logger.error(String.format("not valid json format %s",exception));
             }
@@ -83,9 +85,9 @@ public class Discovery extends AbstractVerticle
 
                 if(request.isEmpty() || !request.containsKey(Constants.ID))
                 {
-                    logger.info("not valid json value request");
+                    logger.debug("missing fields");
 
-                    message.fail(400, new JsonObject().put(Constants.STATUS, Constants.STATUS_FAIL).put(Constants.MESSAGE, "please entre discoveryID in Json").toString());
+                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"MISSING FIELD")).toString());
                 }
                 else
                 {
@@ -99,7 +101,7 @@ public class Discovery extends AbstractVerticle
 
                             if(!context.getJsonArray("discovery.data").isEmpty())
                             {
-                                var contexts = SSHClient.createContext(context.getJsonArray("discovery.data"), "Discovery", logger);
+                                var contexts = SSHClient.createContext(context.getJsonArray("discovery.data"), Constants.DISCOVERY, logger);
 
                                 if(!contexts.isEmpty())
                                 {
@@ -192,9 +194,9 @@ public class Discovery extends AbstractVerticle
 
                 if( !request.containsKey(Constants.IP) || !request.containsKey(Constants.PORT) || !request.containsKey(Constants.ID))
                 {
-                    logger.info("not proper request format");
+                    logger.debug("missing fields");
 
-                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"invalid format")).toString());
+                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"MISSING FIELD")).toString());
                 }
                 else
                 {
@@ -231,9 +233,9 @@ public class Discovery extends AbstractVerticle
 
                 if(!request.containsKey(Constants.ID))
                 {
-                    logger.info("not proper request format");
+                    logger.debug("missing fields");
 
-                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"invalid format")).toString());
+                    message.fail(400,new JsonObject().put(Constants.STATUS,Constants.STATUS_FAIL).put(Constants.ERROR,new JsonObject().put(Constants.ERROR_MESSAGE,"please entre valid fields").put(Constants.ERROR_CODE,400).put(Constants.ERROR,"MISSING FIELD")).toString());
                 }
                 else
                 {

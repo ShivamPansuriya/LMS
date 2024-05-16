@@ -7,6 +7,7 @@ import io.vertx.core.http.HttpServerOptions;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import com.motadata.utils.Constants;
+import io.vertx.ext.web.handler.ErrorHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,21 +28,28 @@ public class APIEngine extends AbstractVerticle
 
         var provisionRouter = Router.router(vertx);
 
+//        <<--------------------------sub routes-------------------------->>
         mainRouter.route("/credential/*").subRouter(credentialRouter);
 
         mainRouter.route("/discovery/*").subRouter(discoveryRouter);
 
         mainRouter.route("/provision/*").subRouter(provisionRouter);
 
-        // main router API
+        // <-------------------------------main router API------------------------------>>
         mainRouter.route("/").handler(ctx ->
         {
-            ctx.json(new JsonObject().put("STATUS", "SUCCESS").put("MESSAGE", "Welcome to Network Monitoring System!"));
+            ctx.json(new JsonObject().put(Constants.STATUS, Constants.STATUS_SUCCESS).put(Constants.MESSAGE, "Welcome to Network Monitoring System!"));
         });
 
-        // credential profile APIs
+        // error handler if routing fails
+        mainRouter.route().failureHandler(ErrorHandler.create(vertx));
+
+        // <<-----------------------------credential profile APIs------------------------------>
+        // create new credential profile
         credentialRouter.route(HttpMethod.POST,"/post").handler(ctx-> ctx.request().bodyHandler(buffer -> eventBus.request(Constants.CREATE_CREDENTIAL,buffer.toString(), reply->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(reply.succeeded())
             {
                 ctx.json(new JsonObject(reply.result().body().toString()));
@@ -53,8 +61,11 @@ public class APIEngine extends AbstractVerticle
             }
         })));
 
+        // get all credential profiles
         credentialRouter.route(HttpMethod.GET,"/get").handler(ctx-> eventBus.request(Constants.GET_CREDENTIAL,"", reply->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(reply.succeeded())
             {
                 ctx.json(new JsonObject(reply.result().body().toString()));
@@ -68,8 +79,11 @@ public class APIEngine extends AbstractVerticle
 
         }));
 
+        // update credential profile
         credentialRouter.route(HttpMethod.PUT,"/put").handler(ctx-> ctx.request().bodyHandler(buffer -> eventBus.request(Constants.UPDATE_CREDENTIAL,buffer.toString(), reply->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(reply.succeeded())
             {
                 ctx.json(new JsonObject(reply.result().body().toString()));
@@ -83,8 +97,11 @@ public class APIEngine extends AbstractVerticle
 
         })));
 
+        // delete credential profile
         credentialRouter.route(HttpMethod.DELETE,"/delete").handler(ctx-> ctx.request().bodyHandler(buffer -> eventBus.request(Constants.DELETE_CREDENTIAL,buffer.toString(), reply->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(reply.succeeded())
             {
                 ctx.json(new JsonObject(reply.result().body().toString()));
@@ -99,10 +116,13 @@ public class APIEngine extends AbstractVerticle
         })));
 
 
-        // discovery APIs
+        // <----------------------------------discovery APIs-------------------------------------->
 
+        // create new discovery profile
         discoveryRouter.route(HttpMethod.POST,"/post").handler(ctx-> ctx.request().bodyHandler(buffer -> eventBus.request(Constants.CREATE_DISCOVERY,buffer.toString(), reply->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(reply.succeeded())
             {
                 ctx.json(new JsonObject(reply.result().body().toString()));
@@ -115,8 +135,11 @@ public class APIEngine extends AbstractVerticle
             }
         })));
 
+        // get all discovery profiles
         discoveryRouter.route(HttpMethod.GET,"/get").handler(ctx-> eventBus.request(Constants.GET_DISCOVERY,"", reply->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(reply.succeeded())
             {
                 ctx.json(new JsonObject(reply.result().body().toString()));
@@ -130,8 +153,11 @@ public class APIEngine extends AbstractVerticle
 
         }));
 
+        // run discovery
         discoveryRouter.route(HttpMethod.GET,"/run/:id").handler(ctx-> eventBus.request(Constants.RUN_DISCOVERY, new JsonObject().put(Constants.ID,ctx.request().getParam("id")).toString(), reply ->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(reply.succeeded())
             {
                 ctx.json(new JsonObject(reply.result().body().toString()));
@@ -145,8 +171,11 @@ public class APIEngine extends AbstractVerticle
 
         }));
 
+        // update discovery profile
         discoveryRouter.route(HttpMethod.PUT,"/put").handler(ctx-> ctx.request().bodyHandler(buffer -> eventBus.request(Constants.UPDATE_DISCOVERY,buffer.toString(), reply->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(reply.succeeded())
             {
                 ctx.json(new JsonObject(reply.result().body().toString()));
@@ -160,8 +189,11 @@ public class APIEngine extends AbstractVerticle
 
         })));
 
+        // delete discovery profile
         discoveryRouter.route(HttpMethod.DELETE,"/delete").handler(ctx-> ctx.request().bodyHandler(buffer -> eventBus.request(Constants.DELETE_DISCOVERY,buffer.toString(), reply->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(reply.succeeded())
             {
                 ctx.json(new JsonObject(reply.result().body().toString()));
@@ -175,10 +207,13 @@ public class APIEngine extends AbstractVerticle
 
         })));
 
-        //Provision APIs
+        // <<---------------------------Provision APIs------------------------------>>
 
+        // provision of device
         provisionRouter.route(HttpMethod.POST,"/run/:id").handler(ctx-> eventBus.request(Constants.PROVISION, new JsonObject().put(Constants.ID,ctx.request().getParam("id")).toString(), reply->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(reply.succeeded())
             {
                 ctx.json(new JsonObject(reply.result().body().toString()));
@@ -191,8 +226,11 @@ public class APIEngine extends AbstractVerticle
             }
         }));
 
+        //get provision data (currently not in use)
         provisionRouter.route(HttpMethod.GET,"/get/:ip").handler(ctx-> eventBus.request(Constants.GET_POLL_DATA, new JsonObject().put(Constants.IP,ctx.request().getParam("ip")).toString(), result->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(result.succeeded())
             {
                 ctx.json(new JsonObject(result.result().body().toString()));
@@ -205,8 +243,11 @@ public class APIEngine extends AbstractVerticle
             }
         }));
 
+        // un-provision of device
         provisionRouter.route(HttpMethod.DELETE,"/delete/:id").handler(ctx-> eventBus.request(Constants.UNPROVISION, new JsonObject().put(Constants.ID,ctx.request().getParam("id")).toString(), result->
         {
+            logger.debug(Constants.CONTAINERS, ctx.request().method(), ctx.request().path(), ctx.request().remoteAddress());
+
             if(result.succeeded())
             {
                 ctx.json(new JsonObject(result.result().body().toString()));

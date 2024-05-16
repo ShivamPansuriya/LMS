@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"golang.org/x/crypto/ssh"
 	"motadata-lite/utils"
+	"motadata-lite/utils/constants"
 	"time"
 )
 
@@ -13,6 +14,8 @@ type Client struct {
 	hostname string
 
 	port float64
+
+	timeout float64
 
 	password string
 
@@ -24,31 +27,35 @@ type Client struct {
 }
 
 func (client *Client) SetContext(context map[string]interface{}, credential map[string]interface{}) {
-	client.logger = utils.NewLogger("goEngine/client", "SSH Client")
+	client.logger = utils.NewLogger("goEngine/SSH client", "SSH Client")
 
-	client.ip = context[utils.ObjectIP].(string)
+	client.ip = context[constants.ObjectIP].(string)
 
-	client.hostname = credential[utils.ObjectHost].(string)
+	client.hostname = credential[constants.ObjectHost].(string)
 
-	client.port = context[utils.ObjectPort].(float64)
+	client.port = context[constants.ObjectPort].(float64)
 
-	client.password = credential[utils.ObjectPassword].(string)
+	client.timeout = context[constants.TimeOut].(float64)
+
+	client.password = credential[constants.ObjectPassword].(string)
 
 }
 
 func (client *Client) Close() error {
 
-	err := client.client.Close()
+	err := client.session.Close()
+
+	if err != nil {
+		client.logger.Error(fmt.Sprintf("Can't close ssh session: %v ", err))
+		return err
+	}
+
+	err = client.client.Close()
+
 	if err != nil {
 		client.logger.Error(fmt.Sprintf("Can't close ssh connection: %v ", err))
 		return err
 	}
-
-	err = client.session.Close()
-	if err != nil {
-		client.logger.Error(fmt.Sprintf("Can't close ssh session: %v ", err))
-	}
-
 	return err
 }
 
@@ -65,25 +72,29 @@ func (client *Client) Init() (bool, error) {
 
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 
-		Timeout: 10 * time.Second, // Set the timeout to 20 seconds
+		Timeout: time.Duration(client.timeout * float64(time.Second)), // Set the timeout
 	}
 
 	// Connect to the remote server
-	connectStr := fmt.Sprintf("%s:%v", client.ip, client.port)
-
-	sshConnection, err := ssh.Dial("tcp", connectStr, config)
-
-	client.client = sshConnection
+	sshConnection, err := ssh.Dial("tcp", fmt.Sprintf("%s:%v", client.ip, client.port), config)
 
 	if err != nil {
 
-		client.logger.Info(fmt.Sprintf("failed to connet raason: %s", err.Error()))
+		client.logger.Info(fmt.Sprintf("failed to connet reason: %s", err.Error()))
 
 		return false, err
 	}
 
+	client.client = sshConnection
+
 	sshSession, err := sshConnection.NewSession()
 
+	if err != nil {
+		client.logger.Info(fmt.Sprintf("failed to create session reason: %s", err.Error()))
+
+		return false, err
+
+	}
 	client.session = sshSession
 
 	return true, err

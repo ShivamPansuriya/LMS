@@ -4,6 +4,10 @@ public class Constants
 {
     private Constants(){}
 
+    public static final Integer TIME = 10;
+
+    public static final int POLL_DURATION = 60;
+
     public static final String CREATE_CREDENTIAL = "profile.post";
 
     public static final String GET_CREDENTIAL = "profile.get";
@@ -30,21 +34,21 @@ public class Constants
 
     public static final String GET_POLL_DATA = "data.get";
 
-    public static final String STATUS = "status";
-
-    public static final String STATUS_FAIL = "fail";
-
-    public static final String STATUS_SUCCESS = "success";
-
-    public static final String MESSAGE = "message";
-
     public static final String REQUEST_TYPE = "request.type";
 
     public static final String REQUEST_DATA = "request.data";
 
+    public static final String DEVICE_TYPE = "device.type";
+
+    public static final String TIMEOUT = "object.timeout";
+
     public static final String CREDENTIAL = "credential";
 
+    public static final String CREDENTIALS = "credentials";
+
     public static final String DISCOVERY = "discovery";
+
+    public static final String COLLECT = "collect";
 
     public static final String CONTEXT = "context";
 
@@ -53,30 +57,48 @@ public class Constants
     public static final String POLL_TIME = "poll.time";
 
     public static final String POLL_DATA = "poll.data";
+
     public static final String IP = "object.ip";
+
     public static final String PORT = "object.port";
+
     public static final String PASSWORD = "object.password";
+
     public static final String HOSTNAME = "object.host";
+
     public static final String ID = "id";
 
     public static final String RESULT = "result";
 
     public static final String GET = "get";
+
     public static final String PUT = "put";
+
     public static final String POST = "post";
+
     public static final String DELETE = "delete";
 
     public static final String ERROR = "error";
+
     public static final String ERROR_MESSAGE = "error.message";
+
     public static final String ERROR_CODE = "error.code";
+
+    public static final String STATUS = "status";
+
+    public static final String STATUS_FAIL = "fail";
+
+    public static final String STATUS_SUCCESS = "success";
+
+    public static final String MESSAGE = "message";
 
     public static final String PLUGIN_APPLICATION_PATH = "/goEngine/pluginEngine";
 
     public static final String RUN = "plugin.run";
 
-    public static final String SET_PROVISION = "Provision.set";
-
     public static final String INVALID_CREDENTIAL = "-1";
+
+    public static final String CONTAINERS = "Method {} on {} from {}";
 
     // result keys:
     public static final String VENDOR = "system.vendor";
@@ -96,8 +118,6 @@ public class Constants
     public static final String INTERRUPT_PER_SECONDS = "system.interrupts.per.sec";
 
     public static final String SYSTEM_CPU_IO_PERCENT = "system.cpu.io.percent";
-
-    public static final String SYSTEM_RUNNING_PROCESSES = "system.running.processes";
 
     public static final String SYSTEM_NETWORK_UDP_CONNECTIONS = "system.network.udp.connections";
 
@@ -172,6 +192,4 @@ public class Constants
     public static final String SYSTEM_CPU_CORE = "system.cpu.core";
 
     public static final String SYSTEM_CONTEXT_SWITCHES_PER_SEC = "system.context.switches.per.sec";
-
-
 }

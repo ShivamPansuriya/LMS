@@ -28,7 +28,7 @@ public class ConfigManager
 
     private static final String networkStatsInsertQ = "INSERT INTO NetworkStats (device_id, network_udp_connections, network_tcp_connections, network_tcp_retransmissions, network_error_packets, network_out_bytes_rate) VALUES (?, ?, ?, ?, ?, ?)";
 
-    private static final String systemStatsInsertQ = "INSERT INTO SystemStats (device_id, system_vendor, system_os_name, system_os_version, started_time, started_time_seconds, system_model, system_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String systemStatsInsertQ = "INSERT INTO SystemStats (device_id, system_vendor, system_os_name, system_os_version, started_time, started_time_seconds, system_model, system_name, product_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     private static final String diskStatsInsertQ = "INSERT INTO DiskStats (device_id, opened_file_descriptors, disk_capacity_bytes, disk_free_bytes, disk_free_percent, disk_used_percent, disk_used_bytes, disk_io_time_percent) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -158,6 +158,8 @@ public class ConfigManager
         systemInsertStmt.setString(7, result.getString(Constants.SYSTEM_MODEL));
 
         systemInsertStmt.setString(8, result.getString(Constants.SYSTEM_NAME));
+
+        systemInsertStmt.setString(9, result.getString(Constants.SYSTEM_PRODUCT));
 
         statements.add(systemInsertStmt);
 

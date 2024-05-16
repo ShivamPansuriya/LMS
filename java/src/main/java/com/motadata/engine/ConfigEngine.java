@@ -32,6 +32,8 @@ public class ConfigEngine extends AbstractVerticle
 
     private final Map<Long, Integer> provisionTime = new HashMap<>();
 
+    private final Map<Long,Long> provisionList = new HashMap<>();
+
     @Override
     public void start(Promise<Void> startPromise)
     {
@@ -59,7 +61,6 @@ public class ConfigEngine extends AbstractVerticle
 
                             logger.debug("new credential profile added {}",response);
 
-
                             break;
 
                         case Constants.DISCOVERY:
@@ -75,6 +76,8 @@ public class ConfigEngine extends AbstractVerticle
 
                                     logger.debug("credential not matched with existing data");
 
+                                    response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, "INVALID DATA").put(Constants.ERROR_CODE, 400).put(Constants.MESSAGE, String.format("error in saving %s, credentials do not match",request.getString(Constants.REQUEST_TYPE))));
+
                                     break;
                                 }
                             }
@@ -89,19 +92,27 @@ public class ConfigEngine extends AbstractVerticle
 
                                 logger.debug("new discovery profile added {}",response);
                             }
+
                             break;
 
-                        case Constants.SET_PROVISION:
+                        case Constants.PROVISION:
                             id = ConfigManager.generateID();
 
                             if(validDiscoveryProfile.containsKey(Long.parseLong(data.getString(Constants.ID))) && !provisionTime.containsKey(Long.parseLong(data.getString(Constants.ID))))
                             {
                                 provisionTime.put(Long.parseLong(data.getString(Constants.ID)), 60);
 
+                                provisionList.put(id,Long.parseLong(data.getString(Constants.ID)));
+
                                 response.put(Constants.ID, id);
 
                                 logger.debug("provision started for discovery id {}",data.getString(Constants.ID));
                             }
+                            else
+                            {
+                                response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, "PROVISION ERROR").put(Constants.ERROR_CODE, 400).put(Constants.MESSAGE, String.format("error in saving %s, make sure that discovery run is success and not already provisioned",request.getString(Constants.REQUEST_TYPE))));
+                            }
+
                             break;
 
                         case Constants.POLL_DATA:
@@ -124,7 +135,7 @@ public class ConfigEngine extends AbstractVerticle
 //                            }
 //
 //                            response.put(Constants.MESSAGE,"poll data saved");
-                            var results = new JsonArray(data.getString("data"));
+                            var results = new JsonArray(data.getString(Constants.POLL_DATA));
 
                             for(var context: results)
                             {
@@ -198,12 +209,13 @@ public class ConfigEngine extends AbstractVerticle
 
                                 logger.debug("value added to valid discovery {}:{}",discoveryID,data.getString("credential.id"));
                             }
+
                             response.put(Constants.MESSAGE, "discovery run successfully");
 
                             break;
                     }
 
-                if(!response.isEmpty())
+                if(!response.isEmpty() && !response.containsKey(Constants.ERROR))
                 {
                     response.put(Constants.STATUS, Constants.STATUS_SUCCESS);
 
@@ -213,17 +225,16 @@ public class ConfigEngine extends AbstractVerticle
                 {
                     response.put(Constants.STATUS,Constants.STATUS_FAIL);
 
-                    response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, "INSERTION ERROR").put(Constants.ERROR_CODE, 400).put(Constants.MESSAGE, String.format("error in saving %s, make sure that provided fields are valid",request.getString(Constants.REQUEST_TYPE))));
-
                     message.fail(400, response.toString());
                 }
-            } catch(Exception exception)
+            }
+            catch(Exception exception)
             {
                 response.put(Constants.STATUS, Constants.STATUS_FAIL);
 
-                response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, exception).put(Constants.ERROR_CODE, 502).put(Constants.MESSAGE, "error in executing update operation"));
+                response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, exception.getMessage()).put(Constants.ERROR_CODE, 404).put(Constants.MESSAGE, "error in executing INSERT operation"));
 
-                message.fail(501, response.toString());
+                message.fail(500, response.toString());
 
                 logger.error(exception.getMessage());
             }
@@ -247,6 +258,10 @@ public class ConfigEngine extends AbstractVerticle
                         {
                             response.put(key.toString(), credentialProfile.get(key));
                         }
+
+                        if(response.isEmpty())
+                            response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, "GET").put(Constants.ERROR_CODE, 500).put(Constants.MESSAGE, "No Credential profile is present.Please add credential profile!"));
+
                         break;
 
                     case Constants.DISCOVERY:
@@ -254,6 +269,10 @@ public class ConfigEngine extends AbstractVerticle
                         {
                             response.put(key.toString(), discoveryProfile.get(key));
                         }
+
+                        if(response.isEmpty())
+                            response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, "GET").put(Constants.ERROR_CODE, 500).put(Constants.MESSAGE, "No Discovery profile is present.Please add Discovery profile!"));
+
                         break;
 
                     case Constants.CONTEXT:
@@ -266,7 +285,7 @@ public class ConfigEngine extends AbstractVerticle
 
                             if(SSHClient.isAvailable(profile.getString(Constants.IP),logger))
                             {
-                                var credentialList = profile.getJsonArray("credentials");
+                                var credentialList = profile.getJsonArray(Constants.CREDENTIALS);
 
                                 var credentials = new JsonArray();
 
@@ -282,14 +301,18 @@ public class ConfigEngine extends AbstractVerticle
                                     }
                                 }
 
-                                contexts.add(new JsonObject().put(Constants.DISCOVERY, profile).put("credentials", credentials));
+                                contexts.add(new JsonObject().put(Constants.DISCOVERY, profile).put(Constants.CREDENTIALS, credentials));
                             }
 
                             response.put("discovery.data", contexts);
+
+                            logger.debug("discovery run performed for id {}",data.getString(Constants.ID));
                         }
                         else
                         {
                             response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, "RUN ERROR").put(Constants.ERROR_CODE, 404).put(Constants.MESSAGE, String.format("no such Discovery profile(id= %s) available", data.getString(Constants.ID))));
+
+                            logger.warn("Request Discovery id {} is not present so can't run discovery",data.getString(Constants.ID));
                         }
                         break;
 
@@ -310,12 +333,14 @@ public class ConfigEngine extends AbstractVerticle
 
                                 profile.put(Constants.DISCOVERY, discoveryProfile.get(id));
 
-                                profile.put("credentials", new JsonArray().add(credentialProfile.get(credentialID)));
+                                profile.put(Constants.CREDENTIAL, new JsonArray().add(credentialProfile.get(credentialID)));
 
                                 contexts.add(profile);
                             }
                         }
+
                         response.put(Constants.POLL_DATA, contexts);
+
                         break;
 
                     case Constants.POLL_TIME:
@@ -328,7 +353,7 @@ public class ConfigEngine extends AbstractVerticle
 
                             if(time <= 0)
                             {
-                                provisionTime.put(discoveryId, 60);
+                                provisionTime.put(discoveryId, Constants.POLL_DURATION);
                             }
                             else
                             {
@@ -340,12 +365,13 @@ public class ConfigEngine extends AbstractVerticle
 
                         break;
 
+                        // currently not in use
                     case Constants.POLL_DATA:
 
                         response.put(Constants.POLL_DATA, poolData.get(data.getString(Constants.IP)));
 
                         if(response.isEmpty())
-                            response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, "GET ERROR").put(Constants.ERROR_CODE, 500).put(Constants.MESSAGE, "unable to fetch data from DB"));
+                            response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, "GET").put(Constants.ERROR_CODE, 500).put(Constants.MESSAGE, "unable to fetch data from DB"));
 
                         break;
                 }
@@ -358,17 +384,16 @@ public class ConfigEngine extends AbstractVerticle
                 }
                 else
                 {
-                    response.put(Constants.STATUS,Constants.STATUS_FAIL);
+                    response.put(Constants.STATUS, Constants.STATUS_FAIL);
 
-                    message.fail(500, response.toString());
-
-                    logger.error(response.toString());
+                    message.fail(400, response.toString());
                 }
-            } catch(Exception exception)
+            }
+            catch(Exception exception)
             {
                 response.put(Constants.STATUS, Constants.STATUS_FAIL);
 
-                response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, exception).put(Constants.ERROR_CODE, 500).put(Constants.MESSAGE, "error in executing GET operation"));
+                response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, exception.getMessage()).put(Constants.ERROR_CODE, 500).put(Constants.MESSAGE, "error in executing GET operation"));
 
                 message.fail(500, response.toString());
 
@@ -426,17 +451,18 @@ public class ConfigEngine extends AbstractVerticle
                 {
                     response.put(Constants.STATUS, Constants.STATUS_FAIL);
 
-                    response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, "No such profile").put(Constants.ERROR_CODE, 409).put(Constants.MESSAGE, String.format("unable to update %s profile", request.getString(Constants.REQUEST_TYPE))));
+                    response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, "UPDATE").put(Constants.ERROR_CODE, 400).put(Constants.MESSAGE, String.format("unable to update %s profile, as no such profile exists", request.getString(Constants.REQUEST_TYPE))));
 
-                    message.fail(409, response.toString());
+                    message.fail(400, response.toString());
 
                     logger.error(response.toString());
                 }
-            } catch(Exception exception)
+            }
+            catch(Exception exception)
             {
                 response.put(Constants.STATUS, Constants.STATUS_FAIL);
 
-                response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, exception.getCause().getMessage()).put(Constants.ERROR_CODE, 500).put(Constants.MESSAGE, "error in executing update operation"));
+                response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, exception.getMessage()).put(Constants.ERROR_CODE, 500).put(Constants.MESSAGE, "error in executing UPDATE operation"));
 
                 message.fail(500, response.toString());
 
@@ -465,10 +491,16 @@ public class ConfigEngine extends AbstractVerticle
                             credentialProfile.remove(id);
 
                             response.put(Constants.MESSAGE, "Credential profile deleted successfully");
+
+                            logger.info("credential profile {} deleted",id);
                         }
+                        else
+                        {
+                            response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, String.format("credential profile %s is currently provisioned", request.getString(Constants.REQUEST_TYPE))).put(Constants.ERROR_CODE, 400).put(Constants.ERROR_MESSAGE, String.format("unable to delete profile id: %s", request.getString(Constants.REQUEST_TYPE))));
 
-                        response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR,String.format( "This %s profile is currently provisioned",request.getString(Constants.REQUEST_TYPE))).put(Constants.ERROR_CODE, 400).put(Constants.ERROR_MESSAGE, String.format("unable to delete %s profile", request.getString(Constants.REQUEST_TYPE))));
+                            logger.debug("unable to delete credential profile {} because is provisioned",id);
 
+                        }
                         break;
 
                     case Constants.DISCOVERY:
@@ -477,24 +509,36 @@ public class ConfigEngine extends AbstractVerticle
                         {
                             discoveryProfile.remove(id);
 
-                            response.put(Constants.MESSAGE, "Credential profile deleted successfully");
+                            response.put(Constants.MESSAGE, "Discovery profile deleted successfully");
+
+                            logger.info("discovery profile {} deleted",id);
+
                         }
+                        else
+                        {
+                            response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, String.format("Discovery profile %s is currently provisioned", request.getString(Constants.REQUEST_TYPE))).put(Constants.ERROR_CODE, 400).put(Constants.ERROR_MESSAGE, String.format("unable to delete profile id: %s", request.getString(Constants.REQUEST_TYPE))));
 
-                        response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR,String.format( "This %s profile is currently provisioned",request.getString(Constants.REQUEST_TYPE))).put(Constants.ERROR_CODE, 400).put(Constants.ERROR_MESSAGE, String.format("unable to delete %s profile", request.getString(Constants.REQUEST_TYPE))));
+                            logger.debug("unable to delete discovery profile {} because is provisioned",id);
 
+                        }
                         break;
 
                     case Constants.PROVISION:
 
-                        if(provisionTime.containsKey(id))
+                        if(provisionList.containsKey(id))
                         {
-                            provisionTime.remove(id);
+                            provisionTime.remove(provisionList.get(id));
+
+                            provisionList.remove(id);
 
                             response.put(Constants.MESSAGE, "Un-provision successfully");
+
+                            logger.info("provision device {} is unprovisioned",id);
+
                         }
                         else
                         {
-                            response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR,"already un-provisioned").put(Constants.ERROR_CODE, 400).put(Constants.ERROR_MESSAGE, String.format("Request device: %s has not been provisioned yet",id)));
+                            response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR,"already un-provisioned").put(Constants.ERROR_CODE, 400).put(Constants.ERROR_MESSAGE, String.format("Request device id: %s is not provisioned",id)));
                         }
                         break;
 
@@ -506,8 +550,6 @@ public class ConfigEngine extends AbstractVerticle
                     response.put(Constants.STATUS, Constants.STATUS_SUCCESS);
 
                     message.reply(response);
-
-                    logger.info(response.toString());
                 }
                 else
                 {
@@ -517,13 +559,14 @@ public class ConfigEngine extends AbstractVerticle
 
                     logger.error(response.toString());
                 }
-            } catch(Exception exception)
+            }
+            catch(Exception exception)
             {
                 response.put(Constants.STATUS, Constants.STATUS_FAIL);
 
-                response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, exception.getCause().getMessage()).put(Constants.ERROR_CODE, 501).put(Constants.MESSAGE, "error in executing update operation"));
+                response.put(Constants.ERROR, new JsonObject().put(Constants.ERROR, exception.getMessage()).put(Constants.ERROR_CODE, 500).put(Constants.MESSAGE, "error in executing DELETE operation"));
 
-                message.fail(501, response.toString());
+                message.fail(500, response.toString());
 
                 logger.error(exception.getMessage());
             }
