@@ -162,9 +162,7 @@ func Collect(jsonInput map[string]interface{}, errContext *[]map[string]interfac
 
 	client := SSHclient.Client{}
 
-	var credential = jsonInput[constants.Credential].([]interface{})
-
-	client.SetContext(jsonInput, credential[0].(map[string]interface{}))
+	client.SetContext(jsonInput, jsonInput[constants.Credential].(map[string]interface{}))
 
 	isValid, err := client.Init()
 
