@@ -15,8 +15,8 @@
         </encoder>
     </appender>
 
-    <appender name="Credential_File" class="ch.qos.logback.core.FileAppender">
-        <file>credential.log</file>
+    <appender name="API_File" class="ch.qos.logback.core.FileAppender">
+        <file>api.log</file>
         <encoder>
             <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
         </encoder>
@@ -29,15 +29,8 @@
         </encoder>
     </appender>
 
-    <appender name="Plugin_File" class="ch.qos.logback.core.FileAppender">
-        <file>plugin.log</file>
-        <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
-        </encoder>
-    </appender>
-
-    <appender name="Route_File" class="ch.qos.logback.core.FileAppender">
-        <file>api.log</file>
+    <appender name="Credential_File" class="ch.qos.logback.core.FileAppender">
+        <file>credential.log</file>
         <encoder>
             <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
         </encoder>
@@ -50,8 +43,29 @@
         </encoder>
     </appender>
 
-    <appender name="Database_File" class="ch.qos.logback.core.FileAppender">
-        <file>database.log</file>
+    <appender name="DB_File" class="ch.qos.logback.core.FileAppender">
+        <file>configDB.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="Scheduler_File" class="ch.qos.logback.core.FileAppender">
+        <file>scheduler.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="Worker_File" class="ch.qos.logback.core.FileAppender">
+        <file>worker.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="Agent_File" class="ch.qos.logback.core.FileAppender">
+        <file>agentHandler.log</file>
         <encoder>
             <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%-5level] [%thread] [%file:%line] %msg%n</pattern>
         </encoder>
@@ -63,31 +77,39 @@
     </root>
 
     <!-- Logger for Server -->
-    <logger name="com.motadata.Boostrap" level="trace" additivity="false">
+    <logger name="com.motadata.Bootstrap" level="trace" additivity="false">
         <appender-ref ref="FILE_SERVER" />
     </logger>
 
-    <logger name="com.motadata.profile.Credential" level="trace" additivity="false">
-        <appender-ref ref="Credential_File" />
+    <logger name="com.motadata.api.ApiEngine" level="trace" additivity="false">
+        <appender-ref ref="API_File" />
     </logger>
 
-    <logger name="com.motadata.profile.Discovery" level="trace" additivity="false">
+    <logger name="com.motadata.api.Discovery" level="trace" additivity="false">
         <appender-ref ref="Discovery_File" />
     </logger>
 
-    <logger name="com.motadata.engine.PluginEngine" level="trace" additivity="false">
-        <appender-ref ref="Plugin_File" />
+    <logger name="com.motadata.api.Credential" level="trace" additivity="false">
+        <appender-ref ref="Credential_File" />
     </logger>
 
-    <logger name="com.motadata.engine.APIEngine" level="trace" additivity="false">
-        <appender-ref ref="Route_File" />
-    </logger>
-
-    <logger name="com.motadata.profile.Provision" level="trace" additivity="false">
+    <logger name="com.motadata.api.Provision" level="trace" additivity="false">
         <appender-ref ref="Provision_File" />
     </logger>
 
-    <logger name="com.motadata.engine.ConfigEngine" level="trace" additivity="false">
-        <appender-ref ref="Database_File" />
+    <logger name="com.motadata.database.AbstractConfigDB" level="trace" additivity="false">
+        <appender-ref ref="DB_File" />
+    </logger>
+
+    <logger name="com.motadata.engine.Worker" level="trace" additivity="false">
+        <appender-ref ref="Scheduler_File" />
+    </logger>
+
+    <logger name="com.motadata.engine.Worker" level="trace" additivity="false">
+        <appender-ref ref="Worker_File" />
+    </logger>
+
+    <logger name="com.motadata.engine.AgentHandler" level="trace" additivity="false">
+        <appender-ref ref="Agent_File" />
     </logger>
 </configuration>

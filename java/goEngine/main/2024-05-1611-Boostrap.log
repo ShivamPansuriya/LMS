@@ -1,4 +1,0 @@
-2024-05-16 11:58:14.371909284 Info plugin engine started
-2024-05-16 11:58:14.372163503 Info Boostrap Started
-2024-05-16 11:58:14.372330291 Info [map[credentials:[map[credential.id:0 object.host:dhyani object.password:2303]] device.type:linux object.ip:10.20.40.128 object.port:22 object.timeout:10 request.type:discovery status:success]]
-2024-05-16 11:58:14.372473187 Info plugin engine Ended

@@ -1,0 +1,8 @@
+{
+  "object.ip" : "localhost",
+  "object.port" : 8000,
+  "ssh.timeout.duration" : 30,
+  "process.timeout" : 60,
+  "poll.time": 10,
+  "zmq.port": 9000
+}
