@@ -1,0 +1,5 @@
+2024-05-23 13:00:02.859979634 Error Can't close ssh session: EOF 
+2024-05-23 13:00:37.682944232 Error Can't close ssh session: EOF 
+2024-05-23 13:01:12.164331571 Error Can't close ssh session: EOF 
+2024-05-23 13:07:01.748934419 Error failed to connet reason: dial tcp 10.20.40.227:22: connect: no route to host
+2024-05-23 13:08:46.136756019 Error failed to connet reason: dial tcp 10.20.40.227:22: connect: no route to host

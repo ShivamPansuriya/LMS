@@ -1,0 +1,11 @@
+2024-05-23 10:54:00.887800584 Info plugin engine started
+2024-05-23 10:54:00.888097961 Fatal not valid argument size
+2024-05-23 10:54:00.888143385 Info plugin engine stopped
+2024-05-23 10:54:34.87820117 Info plugin engine started
+2024-05-23 10:54:34.878468253 Info Boostrap Started
+2024-05-23 10:57:23.503055481 Info plugin engine started
+2024-05-23 10:57:23.503332329 Info Boostrap Started
+2024-05-23 10:58:12.668950403 Info plugin engine started
+2024-05-23 10:58:12.66942335 Info Boostrap Started
+2024-05-23 10:58:16.909723969 Info [map[credential:map[credential.id:0 name:test2 password:1010 username:yash] device.type:linux discovery.id:1 id:2 ip:10.20.40.227 object.timeout:30 port:22 provision.id:2 request.type:collect result:map[started.time:2024-05-23 10:13:56 started.time.seconds:1.716439436e+09 system.buffer.memory.bytes:6977288 system.cache.memory.bytes:6813.6 system.context.switches.per.sec:965 system.cpu.core:8 system.cpu.idle.percent:87.36 system.cpu.interrupt.percent:8.8341e-05 system.cpu.io.percent:0.15 system.cpu.kernel.percent:2.03 system.cpu.percent:2.6 system.cpu.type:x86_64 system.cpu.user.percent:5.3 system.disk.capacity.bytes:2.5630813e+08 system.disk.free.bytes:9.8864062e+07 system.disk.free.percent:0 system.disk.io.time.percent:0.15 system.disk.used.bytes:1.4477412e+08 system.disk.used.percent:0 system.interrupts.per.sec:2650.23 system.load.avg1.min:0 system.load.avg15.min:0 system.load.avg5.min:0 system.memory.available.bytes:1598.9 system.memory.free.bytes:1675583488 system.memory.free.percent:10.166980364228305 system.memory.total.bytes:15726.4 system.memory.used.bytes:7669977088 system.memory.used.percent:46.51 system.model:20KGS3Y814 system.network.error.packets:0 system.network.out.bytes.rate:36418 system.network.tcp.connections:45 system.network.tcp.retransmissions:48 system.network.udp.connections:1 system.opened.file.descriptors:134253 system.os.name:Linux system.os.version:6.5.0-35-generic system.overall.memory.free.percent:17.93 system.product:yash-motadata system.running.processes:309 system.swap.memory.free.bytes:2048 system.swap.memory.free.percent:100 system.swap.memory.provisioned.bytes:2048 system.swap.memory.used.bytes:0 system.swap.memory.used.percent:0 system.vendor:LENOVO] status:success]]
+2024-05-23 10:58:16.910501938 Info plugin engine Ended

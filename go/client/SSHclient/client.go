@@ -3,8 +3,8 @@ package SSHclient
 import (
 	"fmt"
 	"golang.org/x/crypto/ssh"
+	"motadata-lite/constants"
 	"motadata-lite/utils"
-	"motadata-lite/utils/constants"
 	"time"
 )
 
@@ -15,7 +15,7 @@ type Client struct {
 
 	port float64
 
-	timeout float64
+	timeout int64
 
 	password string
 
@@ -27,17 +27,18 @@ type Client struct {
 }
 
 func (client *Client) SetContext(context map[string]interface{}, credential map[string]interface{}) {
+
 	client.logger = utils.NewLogger("goEngine/SSH client", "SSH Client")
 
-	client.ip = context[constants.ObjectIP].(string)
+	client.ip = context[constants.Ip].(string)
 
-	client.hostname = credential[constants.ObjectHost].(string)
+	client.hostname = credential[constants.Username].(string)
 
-	client.port = context[constants.ObjectPort].(float64)
+	client.port = context[constants.Port].(float64)
 
-	client.timeout = context[constants.TimeOut].(float64)
+	client.timeout = int64(context[constants.TimeOut].(float64))
 
-	client.password = credential[constants.ObjectPassword].(string)
+	client.password = credential[constants.Password].(string)
 
 }
 
@@ -47,16 +48,15 @@ func (client *Client) Close() error {
 
 	if err != nil {
 		client.logger.Error(fmt.Sprintf("Can't close ssh session: %v ", err))
-		return err
 	}
 
 	err = client.client.Close()
 
 	if err != nil {
 		client.logger.Error(fmt.Sprintf("Can't close ssh connection: %v ", err))
-		return err
 	}
-	return err
+
+	return nil
 }
 
 func (client *Client) Init() (bool, error) {
@@ -72,7 +72,7 @@ func (client *Client) Init() (bool, error) {
 
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 
-		Timeout: time.Duration(client.timeout * float64(time.Second)), // Set the timeout
+		Timeout: time.Duration(client.timeout * int64(time.Second)), // Set the timeout
 	}
 
 	// Connect to the remote server
@@ -80,7 +80,7 @@ func (client *Client) Init() (bool, error) {
 
 	if err != nil {
 
-		client.logger.Info(fmt.Sprintf("failed to connet reason: %s", err.Error()))
+		client.logger.Error(fmt.Sprintf("failed to connet reason: %s", err.Error()))
 
 		return false, err
 	}
@@ -90,7 +90,8 @@ func (client *Client) Init() (bool, error) {
 	sshSession, err := sshConnection.NewSession()
 
 	if err != nil {
-		client.logger.Info(fmt.Sprintf("failed to create session reason: %s", err.Error()))
+
+		client.logger.Error(fmt.Sprintf("failed to create session reason: %s", err.Error()))
 
 		return false, err
 
