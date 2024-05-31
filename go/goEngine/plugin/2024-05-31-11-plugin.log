@@ -1,0 +1,2 @@
+2024-05-31 11:58:25.581145608 Error error in the reading output lines: runtime error: slice bounds out of range [:7] with length 4
+2024-05-31 11:59:34.905361872 Error error in the reading output lines: runtime error: slice bounds out of range [:7] with length 4

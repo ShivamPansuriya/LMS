@@ -5,6 +5,8 @@ const (
 
 	Discovery = "discovery"
 
+	Availability = "availability"
+
 	Collect = "collect"
 
 	Port = "port"
