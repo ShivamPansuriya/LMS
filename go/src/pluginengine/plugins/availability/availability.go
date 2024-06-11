@@ -1,7 +1,7 @@
 package availability
 
 import (
-	"motadata-lite/src/pluginengine/utils/constants"
+	"motadata-lite/src/pluginengine/constants"
 	"os/exec"
 	"strings"
 	"sync"

@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"github.com/pebbe/zmq4"
 	"log"
+	"motadata-lite/src/pluginengine/constants"
 	"motadata-lite/src/pluginengine/utils"
-	"motadata-lite/src/pluginengine/utils/constants"
 	"strings"
 )
 
@@ -32,6 +32,7 @@ func (connection *Connections) Init(topic string) (err error) {
 	socket, _ := zmq.NewSocket(zmq4.PUSH)
 
 	if err = socket.Connect("tcp://localhost:9000"); err != nil {
+
 		logger.Fatal("error in connecting socket")
 
 		return err
@@ -74,7 +75,6 @@ func (connection *Connections) StartReceiver() {
 
 	go func(channel chan []map[string]interface{}) {
 		for {
-
 			message, err := connection.receiver.Recv(0)
 
 			if err != nil {

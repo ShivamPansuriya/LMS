@@ -3,8 +3,8 @@ package linux
 import (
 	"fmt"
 	"motadata-lite/src/pluginengine/client/SSHclient"
+	"motadata-lite/src/pluginengine/constants"
 	"motadata-lite/src/pluginengine/utils"
-	"motadata-lite/src/pluginengine/utils/constants"
 	"strconv"
 	"strings"
 	"sync"
@@ -114,13 +114,7 @@ func Discovery(context map[string]interface{}, wg *sync.WaitGroup) {
 
 	errContexts := make([]map[string]interface{}, 0)
 
-	context[constants.Status] = constants.StatusSuccess
-
-	if len(errContexts) > 0 {
-		context[constants.Status] = constants.StatusFail
-
-		context[constants.Error] = errContexts
-	}
+	context[constants.Status] = constants.StatusFail
 
 	defer func() {
 		if err := recover(); err != nil {
@@ -140,6 +134,8 @@ func Discovery(context map[string]interface{}, wg *sync.WaitGroup) {
 
 	client := SSHclient.Client{}
 
+	defer client.Close()
+
 	for _, credential := range context[constants.Credentials].([]interface{}) {
 
 		client.SetContext(context, credential.(map[string]interface{}))
@@ -150,6 +146,8 @@ func Discovery(context map[string]interface{}, wg *sync.WaitGroup) {
 			context[constants.Result] = map[string]interface{}{constants.Ip: context[constants.Ip].(string)}
 
 			context[constants.CredentialProfileID] = credential.(map[string]interface{})[constants.CredentialId].(float64)
+
+			context[constants.Status] = constants.StatusSuccess
 
 			return
 		}
@@ -168,23 +166,17 @@ func Collect(context map[string]interface{}, wg *sync.WaitGroup) {
 
 	client := SSHclient.Client{}
 
-	errContexts := make([]map[string]interface{}, 0)
+	defer client.Close()
+
+	errors := make([]map[string]interface{}, 0)
 
 	context[constants.Status] = constants.StatusSuccess
 
-	if len(errContexts) > 0 {
-		context[constants.Status] = constants.StatusFail
-
-		context[constants.Error] = errContexts
-	}
-
 	client.SetContext(context, context[constants.Credential].(map[string]interface{}))
 
-	err = client.Init()
+	if err = client.Init(); err != nil {
 
-	if err != nil {
-
-		errContexts = append(errContexts, map[string]interface{}{
+		errors = append(errors, map[string]interface{}{
 
 			constants.ErrorCode: constants.SSHConnection,
 
@@ -192,6 +184,8 @@ func Collect(context map[string]interface{}, wg *sync.WaitGroup) {
 
 			constants.Error: err,
 		})
+
+		context[constants.Status] = constants.StatusFail
 
 		return
 	}
@@ -202,7 +196,7 @@ func Collect(context map[string]interface{}, wg *sync.WaitGroup) {
 
 	if err != nil {
 
-		errContexts = append(errContexts, map[string]interface{}{
+		errors = append(errors, map[string]interface{}{
 
 			constants.ErrorCode: constants.InvalidCommand,
 
@@ -217,18 +211,9 @@ func Collect(context map[string]interface{}, wg *sync.WaitGroup) {
 
 	}
 
-	defer func(client *SSHclient.Client) {
-
-		err := client.Close()
-
-		if err != nil {
-			logger.Error(fmt.Sprintf("error in closing ssh connection: %s", err.Error()))
-		}
-	}(&client)
-
 	defer func() {
 		if r := recover(); r != nil {
-			errContexts = append(errContexts, map[string]interface{}{
+			errors = append(errors, map[string]interface{}{
 
 				constants.ErrorCode: constants.CommandReadError,
 
@@ -249,6 +234,12 @@ func Collect(context map[string]interface{}, wg *sync.WaitGroup) {
 	ParseMetric(output, lines)
 
 	context[constants.Result] = output
+
+	if len(errors) > 0 {
+		context[constants.Status] = constants.StatusFail
+
+		context[constants.Error] = errors
+	}
 
 	return
 

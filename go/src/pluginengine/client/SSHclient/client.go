@@ -3,51 +3,68 @@ package SSHclient
 import (
 	"fmt"
 	"golang.org/x/crypto/ssh"
+	. "motadata-lite/src/pluginengine/constants"
 	"motadata-lite/src/pluginengine/utils"
-	. "motadata-lite/src/pluginengine/utils/constants"
 	"time"
 )
 
 type Client struct {
-	hostname, password, ip string
+	client *ssh.Client
+
+	session *ssh.Session
 
 	port float64
 
 	timeout int64
 
-	client *ssh.Client
-
-	session *ssh.Session
+	hostname, password, ip string
 }
 
 var logger = utils.NewLogger("goEngine/SSH client", "SSH Client")
 
 func (client *Client) SetContext(context map[string]interface{}, credential map[string]interface{}) {
 
-	client.ip = context[Ip].(string)
+	if context[Ip] != nil {
+		client.ip = context[Ip].(string)
+	} else {
+		client.ip = "localhost"
 
-	client.hostname = credential[Username].(string)
+		logger.Warn("IP address not found in context. setting to localhost")
+	}
 
-	client.port = context[Port].(float64)
+	if context[Username] != nil && context[Password] != nil {
+		client.hostname = credential[Username].(string)
 
-	client.timeout = int64(context[TimeOut].(float64))
+		client.password = credential[Password].(string)
+	}
 
-	client.password = credential[Password].(string)
+	if context[Port] != nil {
+		client.port = context[Port].(float64)
+	} else {
+		client.port = 22
 
+		logger.Warn("Port not found in context. setting to 22")
+	}
+
+	if context[TimeOut] != nil {
+		client.timeout = int64(context[TimeOut].(float64))
+	} else {
+		client.timeout = 60
+
+		logger.Warn("Timeout setting in context. setting to 60s")
+	}
 }
 
-func (client *Client) Close() (err error) {
+func (client *Client) Close() {
 
-	if err = client.session.Close(); err != nil {
+	if err := client.session.Close(); err != nil {
 		logger.Error(fmt.Sprintf("Can't close ssh session: %v ", err))
 	}
 
-	if err = client.client.Close(); err != nil {
+	if err := client.client.Close(); err != nil {
 		logger.Error(fmt.Sprintf("Can't close ssh connection: %v ", err))
 
 	}
-
-	return err
 }
 
 func (client *Client) Init() (err error) {
